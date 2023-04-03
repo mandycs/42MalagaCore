@@ -8,7 +8,7 @@ int	ft_iscntrl(int c)
 		return (0);
 }
 
-unsigned char	ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c + 32);
@@ -16,7 +16,7 @@ unsigned char	ft_tolower(int c)
 		return (c);
 }
 
-unsigned char	ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (c - 32);
