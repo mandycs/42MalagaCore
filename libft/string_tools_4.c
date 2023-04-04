@@ -67,3 +67,28 @@ char	*ft_strcat(char *restrict s1, const char *restrict s2)
 	s1[len] = '\0';
 	return (s1);
 }
+
+char	*ft_strncat(char *restrict s1, const char *restrict s2, size_t n)
+{
+	size_t i;
+	size_t len;
+
+	i = 0;
+	len = ft_strlen(s1);
+	while (i < n && s1[i] != '\0')
+	{
+		s1[len] = s2[i];
+		len++;
+		i++;
+	}
+	s1[len] = '\0';
+	len++;
+	i++;
+	while (i < n)
+	{
+		s1[len] = '\0';
+		len++;
+		i++;
+	}
+	return (s1);
+}
