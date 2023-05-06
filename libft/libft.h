@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 23:40:24 by mancorte          #+#    #+#             */
-/*   Updated: 2023/04/22 23:40:24 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/06 19:40:28 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ int		ft_toupper(int c);
 int		ft_atoi(char *str);
 double	ft_sqrt(double x);
 double	ft_double(double x, double y);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 #endif
