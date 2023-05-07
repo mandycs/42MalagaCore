@@ -1,32 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:52:31 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/07 20:21:08 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/06 22:13:50 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/07 20:21:31 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *	str;
-	char	b;
-
-	str = (char *) s;
-	b = (char) c;
-
-	while(*str != '\0')
-		{
-			if (*str == b)
-				return (str);
-			str++;
-		}
-		if (b == '\0')
-			return (str);
-	return (NULL);
 }
