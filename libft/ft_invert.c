@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_invert.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:52:31 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/07 20:35:22 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 00:09:55 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 01:16:43 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, unsigned int c)
+char	*ft_invert(char *s1)
 {
-	char	*str;
-	char	b;
+	size_t	i;
+	size_t	j;
+	char	temp;
 
-	str = (char *)s;
-	b = (char)c;
-	while (*str != '\0')
+	i = 0;
+	j = (ft_strlen(s1) - 1);
+	temp = '0';
+	while (i < (ft_strlen(s1)) / 2)
 	{
-		if (*str == b)
-			return (str);
-		str++;
+		temp = s1[i];
+		s1[i] = s1[j];
+		s1[j] = temp;
+		i++;
+		j--;
 	}
-	if (b == '\0')
-		return (str);
-	return (NULL);
+	return (s1);
 }

@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:52:31 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/07 20:35:22 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 01:49:31 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 10:39:16 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, unsigned int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
-	char	b;
+	char			*str;
+	unsigned int	i;
 
-	str = (char *)s;
-	b = (char)c;
-	while (*str != '\0')
-	{
-		if (*str == b)
-			return (str);
-		str++;
-	}
-	if (b == '\0')
-		return (str);
-	return (NULL);
+	i = 0;
+	if (!s)
+		return (NULL);
 }

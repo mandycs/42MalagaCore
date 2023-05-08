@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:52:31 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/07 20:35:22 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/07 23:39:16 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 01:50:05 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, unsigned int c)
+char	*ft_itoa(int n)
 {
 	char	*str;
-	char	b;
+	long	nb;
+	int		i;
 
-	str = (char *)s;
-	b = (char)c;
-	while (*str != '\0')
+	i = 0;
+	nb = n;
+	str = (char *)malloc(sizeof(char) * (ft_numlen(n) + 1));
+	if (!str)
+		return (NULL);
+	if (nb < 0)
 	{
-		if (*str == b)
-			return (str);
-		str++;
+		nb = nb * -1;
 	}
-	if (b == '\0')
-		return (str);
-	return (NULL);
+	while (nb > 9)
+	{
+		str[i++] = nb % 10 + 48;
+		nb = nb / 10;
+	}
+	if (nb >= 0 && nb <= 9)
+		str[i++] = nb + 48;
+	if (n < 0)
+		str[i++] = '-';
+	str[i] = '\0';
+	str = ft_invert(str);
+	return (str);
 }

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:52:31 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/07 20:35:22 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 00:22:39 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 00:42:20 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strchr(const char *s, unsigned int c)
+int	ft_numlen(int n)
 {
-	char	*str;
-	char	b;
+	int	i;
 
-	str = (char *)s;
-	b = (char)c;
-	while (*str != '\0')
+	i = 0;
+	if (n < 0)
+		i++;
+	if (n <= 9 && n >= -9)
 	{
-		if (*str == b)
-			return (str);
-		str++;
+		i++;
+		return (i);
 	}
-	if (b == '\0')
-		return (str);
-	return (NULL);
+	while (n != 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
 }
