@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 23:40:24 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 16:43:20 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:15:22 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
 void				ft_bzero(void *s, size_t n);
 int					ft_isalpha(int c);
 void				*ft_memmove(void *dst, const void *src, size_t len);
@@ -75,4 +74,7 @@ int					ft_indexchar(const char *s, char c);
 int					ft_count_words(const char *s, char c);
 char				**ft_fill_array(char **str, char const *s, char c);
 t_list				*ft_lstnew(void *content);
+void				ft_lstadd_front(t_list **lst, t_list *new);
+int					ft_lstsize(t_list *lst);
+t_list				*ft_lstlast(t_list *lst);
 #endif

@@ -7,21 +7,23 @@ ft_atoi.c ft_strlcpy.c ft_strlcat.c ft_calloc.c ft_strdup.c ft_substr.c \
 ft_strjoin.c ft_strtrim.c ft_itoa.c ft_numlen.c ft_invert.c \
 ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 ft_putnbr_fd.c ft_split.c ft_count_words.c ft_fill_array.c 
-BSRC = ft_lstnew.c 
+BSRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 BOBJS = $(BSRC:.c=.o)
 OBJS = $(SRC:.c=.o)
 CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) $(BOBJS)
 	ar rcs $(NAME) $(OBJS) $(BOBJS)
 
-$(OBJS) : $(SRC)
+$(OBJS) : $(SRC) 
+	$(CC) $(CFLAGS) -c $(SRC)
+$(BOJS) : $(BSRC)
 	$(CC) $(CFLAGS) -c $(SRC)
 
-bonus : $(BOBJS) $(OBJS)
-	ar rcs $(NAME) $(BOBJS) $(OBJS)
+bonus : $(BOBJS)
+	ar rcs $(NAME) $(BOBJS)
 clean:
 	rm -f $(OBJS) $(BOBJS)
 fclean: clean
