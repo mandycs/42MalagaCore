@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_indexchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 22:13:50 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 14:21:23 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 12:28:00 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 13:32:18 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	ft_indexchar(const char *s, char c)
 {
-	char	*str;
-	size_t	i;
-	size_t	s_len;
+	int	i;
 
 	i = 0;
-	s_len = ft_strlen(s);
-	if (len > s_len)
-		len = s_len;
-	if (start >= s_len)
+	while (s[i] != '\0')
 	{
-		str = (char *)malloc(1);
-		if (!str)
-			return (NULL);
-		str[i] = '\0';
-		return (str);
-	}
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!s || !str)
-		return (NULL);
-	while (i < start)
+		if (s[i] == c)
+			return (i);
 		i++;
-	ft_strlcpy(str, &s[i], len + 1);
-	return (str);
+	}
+	return (NULL);
 }

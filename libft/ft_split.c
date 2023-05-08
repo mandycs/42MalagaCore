@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 22:13:50 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 14:21:23 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 12:16:44 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 16:17:25 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	**ft_split(char const *s, char c)
 {
-	char	*str;
-	size_t	i;
-	size_t	s_len;
+	char	**strs;
+	int		n_str;
+	int		i;
 
 	i = 0;
-	s_len = ft_strlen(s);
-	if (len > s_len)
-		len = s_len;
-	if (start >= s_len)
-	{
-		str = (char *)malloc(1);
-		if (!str)
-			return (NULL);
-		str[i] = '\0';
-		return (str);
-	}
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!s || !str)
+	if (!s)
 		return (NULL);
-	while (i < start)
-		i++;
-	ft_strlcpy(str, &s[i], len + 1);
-	return (str);
+	n_str = ft_count_words(s, c);
+	strs = (char **)malloc((sizeof(char *) * (n_str + 1)));
+	if (!strs)
+		return (NULL);
+	ft_fill_array(strs, s, c);
+	strs[n_str] = NULL;
+	return (strs);
 }

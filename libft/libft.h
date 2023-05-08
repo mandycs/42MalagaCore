@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 23:40:24 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 11:18:19 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:07:27 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,8 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+char	**ft_split(char const *s, char c);
+int		ft_indexchar(const char *s, char c);
+int		ft_count_words(const char *s, char c);
+char	**ft_fill_array(char **str, char const *s, char c);
 #endif
