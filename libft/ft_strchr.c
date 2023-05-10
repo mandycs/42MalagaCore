@@ -6,26 +6,19 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 22:52:31 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/07 20:35:22 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/04 00:10:11 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strchr(const char *s, unsigned int c)
+char	*ft_strchr(const char *s, int c)
 {
-	char	*str;
-	char	b;
-
-	str = (char *)s;
-	b = (char)c;
-	while (*str != '\0')
+	while (*s != (char)c)
 	{
-		if (*str == b)
-			return (str);
-		str++;
+		if (!*s++)
+			return (0);
 	}
-	if (b == '\0')
-		return (str);
-	return (NULL);
+	return ((char *)s);
 }

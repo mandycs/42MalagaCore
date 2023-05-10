@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 23:15:04 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/04 00:13:10 by mancorte         ###   ########.fr       */
+/*   Created: 2023/04/22 23:52:45 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/03 19:13:03 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	char	*char_s;
-	char	*char_result;
+	size_t	i;
+	char	*char_src;
+	char	*char_dest;
 
-	char_s = (char *)s;
-	char_result = NULL;
-	if ((char)c != '\0')
+	char_src = (char *)src;
+	char_dest = (char *)dest;
+	i = 0;
+	if ((char)dest == '\0' && (char)src == '\0')
+		return (dest);
+	if (dest > src)
 	{
-		while (*char_s != '\0')
+		while (len--)
 		{
-			if (*char_s == (char)c)
-			{
-				char_result = char_s;
-			}
-			char_s++;
+			char_dest[len] = char_src[len];
 		}
 	}
-	if ((char)c == '\0')
-		char_result = char_s + ft_strlen(char_s);
-	return (char_result);
+	else
+	{
+		while (i < len)
+		{
+			char_dest[i] = char_src[i];
+			i++;
+		}
+	}
+	return (dest);
 }

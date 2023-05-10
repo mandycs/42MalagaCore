@@ -6,11 +6,11 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 23:29:35 by mancorte          #+#    #+#             */
-/*   Updated: 2023/04/22 23:29:35 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/10 22:25:18 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int		c;
 	long	nb;
