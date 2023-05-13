@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:05:41 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/06 20:19:11 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/13 21:51:44 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,13 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	src_size;
 
-	i = 0;
-	src_size = ft_strlen(src);
+	i = -1;
 	if (dstsize > 0)
 	{
-		while (i < dstsize - 1 && i < src_size)
-		{
+		while (++i < dstsize - 1 && src[i] != '\0')
 			dst[i] = src[i];
-			i++;
-		}
 		dst[i] = '\0';
 	}
-	return (src_size);
+	return (ft_strlen(src));
 }
