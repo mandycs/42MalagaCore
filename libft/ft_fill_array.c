@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:36:27 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 16:20:29 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:09:46 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ char	**ft_fill_array(char **strs, char const *s, char c)
 		while (s[i] != '\0' && s[i] != c)
 			i++;
 		if (j >= ft_strlen(s))
-		{
-			strs[k] = NULL;
-			k++;
-		}
+			strs[k++] = NULL;
 		else
 			strs[k++] = ft_substr(s, j, i - j);
 	}

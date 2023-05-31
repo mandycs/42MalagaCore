@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 11:15:50 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 12:14:43 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:35:54 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,16 @@ void	ft_int_to_char(int nb, int fd)
 	{
 		temp = nb % 10;
 		nb = nb / 10;
-		str[i] = temp + 48;
-		i++;
+		str[i++] = temp + 48;
 	}
 	i--;
 	while (i >= 0)
 	{
-		write(fd, &str[i], 1);
-		i--;
+		write(fd, &str[i--], 1);
 	}
 }
 
-void	ft_putnbr(int nb, int fd)
+void	ft_putnbr_fd(int nb, int fd)
 {
 	if (nb == 0)
 	{
@@ -54,9 +52,4 @@ void	ft_putnbr(int nb, int fd)
 	}
 	if (nb != 0)
 		ft_int_to_char(nb, fd);
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	ft_putnbr(n, fd);
 }

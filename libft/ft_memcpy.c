@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 18:11:46 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/10 22:56:15 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:26:00 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char_src = (unsigned char *)src;
 	i = 0;
 	if (dest == NULL && src == NULL)
-		return (dest);
-	if (*char_dest == '\0' && *char_src == '\0')
 		return (dest);
 	while (i < n)
 	{

@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 23:29:35 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/10 22:25:18 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:05:15 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	ft_atoi(const char *str)
 	else if (str[c] == '+')
 		c++;
 	while (str[c] >= '0' && str[c] <= '9')
-	{
-		nb = nb * 10 + (str[c] - 48);
-		c++;
-	}
+		nb = nb * 10 + (str[c++] - 48);
 	if (min == 1)
 		nb = nb * -1;
 	return (nb);

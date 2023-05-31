@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 11:01:03 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 11:06:37 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:40:49 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,5 @@ void	ft_putstr_fd(char *s, int fd)
 
 	i = 0;
 	while (s[i] != '\0')
-	{
-		ft_putchar_fd(s[i], fd);
-		i++;
-	}
+		ft_putchar_fd(s[i++], fd);
 }

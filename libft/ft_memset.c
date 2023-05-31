@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 22:51:57 by mancorte          #+#    #+#             */
-/*   Updated: 2023/04/22 23:52:54 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:32:45 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned long	i;
+	size_t	i;
 
 	i = 0;
 	while (i < len)
-	{
-		((unsigned char *)b)[i] = c;
-		i++;
-	}
+		((unsigned char *)b)[i++] = c;
 	return (b);
 }

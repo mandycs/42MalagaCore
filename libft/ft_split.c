@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 12:16:44 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 16:17:25 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:01:18 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ char	**ft_split(char const *s, char c)
 {
 	char	**strs;
 	int		n_str;
-	int		i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	n_str = ft_count_words(s, c);
