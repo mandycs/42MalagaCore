@@ -6,12 +6,12 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:36:16 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/28 18:11:26 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/06/18 00:23:12 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
+#include "libft.h"
 
 int	ft_cases(va_list args, const char format)
 {
@@ -31,8 +31,8 @@ int	ft_cases(va_list args, const char format)
 		pl += ft_printnbr(va_arg(args, int));
 	else if (format == 'u')
 		pl += ft_printunbr(va_arg(args, unsigned int));
-	else if (format == 'x')
-		pl += ft_printhex(va_arg(args, unsigned long long));
+	else if ((format == 'x') || (format == 'X'))
+		pl += ft_printhex(va_arg(args, unsigned long long), format);
 	else if (format == '%')
 	{
 		ft_putchar_fd('%', 1);
