@@ -6,11 +6,21 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 19:09:39 by mancorte          #+#    #+#             */
-/*   Updated: 2023/06/18 21:40:06 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/06/18 23:59:56 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != 0)
+		i++;
+	return (i);
+}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -22,44 +32,42 @@ char	*ft_strchr(const char *s, int c)
 	return ((char *)s);
 }
 
-char	*create_line(char *stack)
+char	*ft_strjoin(char *stack, char *temp)
 {
-	char	*line;
-	int		i;
+	size_t	len;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
 	i = 0;
-	if (stack || !*stack)
+	j = 0;
+	len = ft_strlen(stack) + ft_strlen(temp);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!stack || !temp || !str)
 		return (NULL);
-	while (stack[i] != '\n' && stack[i] != '\0')
-		i++;
-	if (stack[i] == '\n')
-		i++;
-	line = malloc(sizeof(char) * (i + 1));
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (stack[i] != '\n' && stack[i] != '\0')
+	while (stack[i] != '\0')
 	{
-		line[i] = stack[i];
+		str[i] = stack[i];
 		i++;
 	}
-	if (stack[i] == '\n')
-		line[i++] = '\n';
-	line[i] = '\0';
-	return (line);
+	while (temp[j] != '\0')
+		str[i++] = temp[j++];
+	str[i] = '\0';
+	return (str);
 }
 
-char	*update_stack(char *stack)
+char	*join_free(char *stack, char *temp)
 {
-	char	*aux;
-	char	*p;
-	int		i;
+	char	*str;
 
-	i = 0;
-	p = (ft_strchr(stack, '\n'));
-	if (!p)
+	if (!stack)
 	{
-		free(stack);
-		return (NULL);
+		stack = malloc(1);
+		stack[0] = '\0';
 	}
+	if (!stack)
+		return (NULL);
+	str = ft_strjoin(stack, temp);
+	free (stack);
+	return (str);
 }
