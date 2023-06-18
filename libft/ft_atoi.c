@@ -6,9 +6,29 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 23:29:35 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/31 13:05:15 by mancorte         ###   ########.fr       */
+/*   Updated: 2023/06/18 14:09:10 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	ft_numlen(int n)
+{
+	int	i;
+
+	i = 0;
+	if (n < 0)
+		i++;
+	if (n <= 9 && n >= -9)
+	{
+		i++;
+		return (i);
+	}
+	while (n != 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
 
 int	ft_atoi(const char *str)
 {
