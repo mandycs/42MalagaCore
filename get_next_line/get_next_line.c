@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:52:31 by mancorte          #+#    #+#             */
-/*   Updated: 2023/06/18 19:10:27 by mancorte         ###   ########.fr       */
+/*   Created: 2023/06/18 18:40:23 by mancorte          #+#    #+#             */
+/*   Updated: 2023/06/18 19:05:40 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*get_next_line(int fd)
 {
-	while (*s != (char)c)
+	static char	*stack = NULL;
+	char		tmp[BUFFER_SIZE + 1];
+	char		*line;
+	size_t		readbytes;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	readbytes = 1;
+	while (ft_strchr(stack, '\n') && readbytes > 0)
 	{
-		if (!*s++)
-			return (0);
 	}
-	return ((char *)s);
 }
