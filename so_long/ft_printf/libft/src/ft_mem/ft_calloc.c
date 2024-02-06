@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/06 21:11:58 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/06 21:44:04 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen_2(const char **s)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
+	void	*array;
 
-	i = 0;
-	while (s[i] != NULL)
-	{
-		i++;
-	}
-	return (i);
+	array = (void *)malloc(size * count);
+	if (!array)
+		return (NULL);
+	ft_bzero(array, size * count);
+	return (array);
 }

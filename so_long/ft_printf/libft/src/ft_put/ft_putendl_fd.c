@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 11:08:15 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 11:11:27 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen_2(const char **s)
+void	ft_putendl_fd(char *s, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != NULL)
-	{
-		i++;
-	}
-	return (i);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

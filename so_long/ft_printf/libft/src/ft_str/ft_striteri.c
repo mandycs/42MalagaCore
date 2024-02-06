@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 10:46:57 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 10:54:19 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen_2(const char **s)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	size_t	i;
+	unsigned int	i;
 
 	i = 0;
-	while (s[i] != NULL)
+	if (!s || !f)
+		return ;
+	while (s[i] != '\0')
 	{
+		(f)(i, s + i);
 		i++;
 	}
-	return (i);
 }

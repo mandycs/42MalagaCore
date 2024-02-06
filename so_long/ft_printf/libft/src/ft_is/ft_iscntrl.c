@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_iscntrl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/04/22 23:27:35 by mancorte          #+#    #+#             */
+/*   Updated: 2023/04/22 23:51:23 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-size_t	ft_strlen_2(const char **s)
+int	ft_iscntrl(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != NULL)
-	{
-		i++;
-	}
-	return (i);
+	if ((c >= 0 && c <= 31) || (c == 127))
+		return (1);
+	else
+		return (0);
 }

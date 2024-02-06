@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/04/22 22:52:31 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/04 00:10:11 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-size_t	ft_strlen_2(const char **s)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != NULL)
+	while (*s != (char)c)
 	{
-		i++;
+		if (!*s++)
+			return (0);
 	}
-	return (i);
+	return ((char *)s);
 }

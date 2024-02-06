@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 21:09:42 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 21:17:01 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen_2(const char **s)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != NULL)
+	if (!lst)
+		return ;
+	while (lst != NULL)
 	{
-		i++;
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (i);
 }

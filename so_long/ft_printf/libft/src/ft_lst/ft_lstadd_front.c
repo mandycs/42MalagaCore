@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 17:55:42 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 19:55:22 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen_2(const char **s)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != NULL)
+	if (*lst == NULL)
 	{
-		i++;
+		new->next = NULL;
+		*lst = new;
 	}
-	return (i);
+	else
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }

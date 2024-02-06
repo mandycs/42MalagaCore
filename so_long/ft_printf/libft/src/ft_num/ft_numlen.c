@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 00:22:39 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/28 17:25:58 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-size_t	ft_strlen_2(const char **s)
+int	ft_numlen(int n)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (s[i] != NULL)
+	if (n < 0)
+		i++;
+	if (n <= 9 && n >= -9)
 	{
+		i++;
+		return (i);
+	}
+	while (n != 0)
+	{
+		n = n / 10;
 		i++;
 	}
 	return (i);

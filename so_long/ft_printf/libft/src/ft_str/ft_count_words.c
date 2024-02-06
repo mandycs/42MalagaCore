@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 14:24:44 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 14:34:02 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen_2(const char **s)
+int	ft_count_words(const char *s, char c)
 {
-	size_t	i;
+	int	i;
+	int	count;
 
 	i = 0;
-	while (s[i] != NULL)
+	count = 0;
+	while (s[i] != '\0')
 	{
-		i++;
+		if (s[i] != c)
+		{
+			count++;
+			while (s[i] != c && s[i] != '\0')
+				i++;
+		}
+		else
+			i++;
 	}
-	return (i);
+	return (count);
 }

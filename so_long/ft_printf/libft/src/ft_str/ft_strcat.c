@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/04/22 23:10:43 by mancorte          #+#    #+#             */
+/*   Updated: 2023/04/22 23:54:03 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen_2(const char **s)
+char	*ft_strcat(char *restrict s1, const char *restrict s2)
 {
 	size_t	i;
+	size_t	len;
 
 	i = 0;
-	while (s[i] != NULL)
+	len = ft_strlen(s1);
+	while (s2[i] != '\0')
 	{
+		s1[len] = s2[i];
+		len++;
 		i++;
 	}
-	return (i);
+	s1[len] = '\0';
+	return (s1);
 }

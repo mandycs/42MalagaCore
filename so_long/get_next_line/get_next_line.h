@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/11/06 20:23:56 by mancorte          #+#    #+#             */
+/*   Updated: 2024/02/06 23:20:43 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-size_t	ft_strlen_2(const char **s)
-{
-	size_t	i;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-	i = 0;
-	while (s[i] != NULL)
-	{
-		i++;
-	}
-	return (i);
-}
+# include <stdlib.h>
+# include <unistd.h>
+
+char	*get_next_line(int fd);
+char	*ft_strchr(const char *s, int c);
+char	*ft_join_and_free(char *s1, char *s2);
+size_t 	ft_strlen(const char *s);
+char	*ft_strdup(const char *s1);
+char	*create_line(char *stack);
+char	*update_stack(char *stack);
+#endif

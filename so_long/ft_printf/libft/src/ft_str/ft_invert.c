@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_invert.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 00:09:55 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 01:16:43 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen_2(const char **s)
+char	*ft_invert(char *s1)
 {
 	size_t	i;
+	size_t	j;
+	char	temp;
 
 	i = 0;
-	while (s[i] != NULL)
+	j = (ft_strlen(s1) - 1);
+	temp = '0';
+	while (i < (ft_strlen(s1)) / 2)
 	{
+		temp = s1[i];
+		s1[i] = s1[j];
+		s1[j] = temp;
 		i++;
+		j--;
 	}
-	return (i);
+	return (s1);
 }

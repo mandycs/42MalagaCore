@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen_2.c                                      :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:54:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 23:19:12 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 01:49:31 by mancorte          #+#    #+#             */
+/*   Updated: 2023/05/08 10:45:57 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen_2(const char **s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
+	char			*str;
+	unsigned int	i;
 
 	i = 0;
-	while (s[i] != NULL)
+	if (!s)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!str)
+		return (NULL);
+	while (s[i] != '\0')
 	{
+		str[i] = (*f)(i, s[i]);
 		i++;
 	}
-	return (i);
+	str[i] = '\0';
+	return (str);
 }
