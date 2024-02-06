@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"algorithm": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"so_long.h": "c"
 	}
 }
