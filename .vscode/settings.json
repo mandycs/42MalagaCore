@@ -3,6 +3,7 @@
 		"algorithm": "c",
 		"stdlib.h": "c",
 		"so_long.h": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"stdio.h": "c"
 	}
 }
