@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:09:12 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/08 13:30:27 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:53:38 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ int		map_len_y(t_mapstats *ms);
 int		check_len_map(t_mapstats *ms);
 int		ft_read_smap(t_mapstats *ms, char *argv);
 int		ft_save_map(t_mapstats *ms);
-
 
 #endif
