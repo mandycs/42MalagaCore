@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 21:13:17 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 20:28:16 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:29:56 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	ms.status = 0;
 	if (argc != 2)
 		return (1);
-	ms.status = ft_read_save_map(&ms, argv[1]);
+	ms.status = ft_read_map(&ms, argv[1]);
 	printf("status map_save: %d\n", ms.status);
 	if (ms.status == -1)
 		return (1);
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-int	ft_read_save_map(t_mapstats *ms, char *argv)
+int	ft_read_smap(t_mapstats *ms, char *argv)
 {
 	ms->y = 0;
 	ms->map = malloc(sizeof(char *) * 100);
@@ -42,8 +42,15 @@ int	ft_read_save_map(t_mapstats *ms, char *argv)
 		free(ms->map);
 		return (-1);
 	}
-	while ((ms->line = get_next_line(fd)) != NULL)
+	return (0);
+}
+
+int	ft_save_map(t_mapstats *ms)
+{
+	ms->line = get_next_line(ms->fd);
+	while (ms->line != NULL)
 	{
+		ms->line = get_next_line(ms->fd);
 		ms->map[ms->y] = malloc(ft_strlen(ms->line) + 1);
 		if (ms->map[ms->y] == NULL)
 		{
