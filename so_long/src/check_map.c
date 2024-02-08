@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:23:22 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/06 20:19:19 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:50:24 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@ int	check_char_map(t_mapstats *ms)
 		ms->map[ms->y][ms->x] != 'P')
 	{
 		return (1);
+	}
+	if (ms->map[ms->y][ms->x] == 'P')
+	{
+		ms->x_init = ms->x;
+		ms->y_init = ms->y;
 	}
 	return (0);
 }

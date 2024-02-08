@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:09:12 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/08 13:53:38 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/08 14:48:59 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_mapstats
 	int		status;
 	char	*line;
 	char	**map;
+	int		x_init;
+	int		y_init;
 }		t_mapstats;
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);
