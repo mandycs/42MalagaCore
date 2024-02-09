@@ -32,11 +32,18 @@ typedef struct s_mapstats
 	int		y_len;
 	int		fd;
 	int		i;
+	int		x_c;
+	int		y_c;
+	int		x_p;
+	int		y_p;
 	int		status;
 	char	*line;
 	char	**map;
+	int		**map_visit;
 	int		x_init;
 	int		y_init;
+	int		x_exit;
+	int		y_exit;
 }		t_mapstats;
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);

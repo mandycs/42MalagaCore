@@ -53,6 +53,11 @@ int	check_char_map(t_mapstats *ms)
 		ms->x_init = ms->x;
 		ms->y_init = ms->y;
 	}
+	if (ms->map[ms->y][ms->x] == 'E')
+	{
+		ms->x_exit = ms->x;
+		ms->y_exit = ms->y;
+	}
 	return (0);
 }
 

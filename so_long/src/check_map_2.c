@@ -47,3 +47,23 @@ int	check_border_map(t_mapstats *ms)
 	}
 	return (0);
 }
+
+int	ft_possible_move(t_mapstats *ms)
+{
+
+}
+
+void	ft_fill_visited_map(t_mapstats *ms)
+{
+	ms->y_c = 0;
+	while (ms->y_c < ms->y_len)
+	{
+		ms->x_c = 0;
+		while(ms->x_c < (ms->x_len - 1))
+		{
+			ms->map_visit[ms->y_c][ms->x_c] = 0;
+			ms->x_c = 0;
+		}
+		ms->y_c++;
+	}
+}
