@@ -3,24 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 22:23:22 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/08 14:50:24 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/10 20:01:11 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_map(t_mapstats *ms)
+int	ft_check_map(t_mapstats *ms)
 {
 	ms->x = 0;
 	ms->y = 0;
 	ms->c = 0;
 	ms->p = 0;
 	ms->e = 0;
+	printf("He entrado en check_map\n");
 	if (check_len_map(ms) == 1)
 		return (1);
+	printf("He chequeado la longitud del mapa\n");
 	while (ms->y < ms->y_len)
 	{
 		while (ms->map[ms->y][ms->x] != '\0' && ms->map[ms->y][ms->x] != '\n')
@@ -66,8 +68,12 @@ int	check_char_map(t_mapstats *ms)
 int	map_len_x(t_mapstats *ms, int y)
 {
 	ms->x = 0;
-	while (ms->map[y][ms->x])
+	printf("He entrado en map_len_x\n");
+	while (ms->map[y][ms->x] != '\0')
+	{
+		printf("He entrado en el while de map_len_x\n");
 		ms->x++;
+	}
 	return (ms->x);
 }
 
@@ -85,6 +91,7 @@ int	check_len_map(t_mapstats *ms)
 {
 	ms->y = 1;
 	ms->x_len = map_len_x(ms, 0);
+	printf("He entrado en check_len_map\n");
 	ms->y_len = map_len_y(ms);
 	if (ms->y_len == ms->x_len || ms->y_len < 2 || ms->x_len < 4)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:09:12 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/08 14:48:59 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/10 19:44:27 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 char	*create_line(char *stack);
 char	*update_stack(char *stack);
-int		check_map(t_mapstats *ms);
+int		ft_check_map(t_mapstats *ms);
 int		check_char_map(t_mapstats *ms);
 void	check_char_min_map(t_mapstats *ms);
 int		check_border_map(t_mapstats *ms);
