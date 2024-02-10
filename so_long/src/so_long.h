@@ -61,7 +61,13 @@ int		check_border_map(t_mapstats *ms);
 int		map_len_x(t_mapstats *ms, int y);
 int		map_len_y(t_mapstats *ms);
 int		check_len_map(t_mapstats *ms);
-int		ft_read_smap(t_mapstats *ms, char *argv);
+int		ft_read_map(t_mapstats *ms, char *argv);
 int		ft_save_map(t_mapstats *ms);
+int		ft_search_map(t_mapstats *ms);
+void	ft_fill_visited_map(t_mapstats *ms);
+int		move_right(t_mapstats *ms);
+int		move_left(t_mapstats *ms);
+int		move_up(t_mapstats *ms);
+int		move_down(t_mapstats *ms);
 
 #endif

@@ -16,21 +16,26 @@ int	main(int argc, char **argv)
 {
 	t_mapstats	ms;
 
-	ms.status = 0;
 	if (argc != 2)
 		return (1);
-	ms.status = ft_read_map(&ms, argv[1]);
-	printf("status map_save: %d\n", ms.status);
-	if (ms.status == -1)
+	if (ft_validate_map(&ms,argv[1]) == 1)
 		return (1);
-	ms.status = check_map(&ms);
-	printf("status check_map: %d\n", ms.status);
-	if (ms.status == 1)
+	
+	return (0);
+}
+
+int	ft_validate_map(t_mapstats *ms, char *argv)
+{
+	if (ft_read_map(ms, argv) == -1)
+		return (1);
+	if (check_map(ms) == 1)
+		return (1);
+	if (ft_search_map(ms) == 1)
 		return (1);
 	return (0);
 }
 
-int	ft_read_smap(t_mapstats *ms, char *argv)
+int	ft_read_map(t_mapstats *ms, char *argv)
 {
 	ms->y = 0;
 	ms->map = malloc(sizeof(char *) * 100);

@@ -48,11 +48,6 @@ int	check_border_map(t_mapstats *ms)
 	return (0);
 }
 
-int	ft_possible_move(t_mapstats *ms)
-{
-
-}
-
 void	ft_fill_visited_map(t_mapstats *ms)
 {
 	ms->y_c = 0;
@@ -62,8 +57,20 @@ void	ft_fill_visited_map(t_mapstats *ms)
 		while(ms->x_c < (ms->x_len - 1))
 		{
 			ms->map_visit[ms->y_c][ms->x_c] = 0;
-			ms->x_c = 0;
 		}
 		ms->y_c++;
 	}
+}
+
+int	ft_search_map(t_mapstats *ms)
+{
+    if (ms->map[ms->y_p][ms->x_p] == 'E')
+		return (0);
+    if (ms->map_visit[ms->y_p][ms->x_p])
+		return (1);
+    ms->map_visit[ms->y_p][ms->x_p] = 1;
+    if (move_up(ms) == 0 || move_down(ms) == 0 || move_left(ms) == 0 ||
+	move_right(ms) == 0)
+		return (0);
+    return (1);
 }
