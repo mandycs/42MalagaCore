@@ -69,5 +69,6 @@ int		move_right(t_mapstats *ms);
 int		move_left(t_mapstats *ms);
 int		move_up(t_mapstats *ms);
 int		move_down(t_mapstats *ms);
+int		ft_validate_map(t_mapstats *ms, char *argv);
 
 #endif
