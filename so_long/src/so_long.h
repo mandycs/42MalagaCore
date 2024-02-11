@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:09:12 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/10 19:44:27 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:05:31 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int		move_left(t_mapstats *ms);
 int		move_up(t_mapstats *ms);
 int		move_down(t_mapstats *ms);
 int		ft_validate_map(t_mapstats *ms, char *argv);
+void	ft_allocate_visited_map(t_mapstats *ms);
 
 #endif

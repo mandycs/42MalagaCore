@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 01:01:06 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/10 21:19:57 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:06:11 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,17 @@ int	check_border_map(t_mapstats *ms)
 	return (0);
 }
 
+void	ft_allocate_visited_map(t_mapstats *ms)
+{
+	ms->map_visit = malloc(sizeof(int *) * ms->y_len);
+	ms->y_c = 0;
+	while (ms->y_c < ms->y_len)
+	{
+		ms->map_visit[ms->y_c] = malloc(sizeof(int) * ms->x_len);
+		ms->y_c++;
+	}
+}
+
 void	ft_fill_visited_map(t_mapstats *ms)
 {
 	ms->y_c = 0;
@@ -57,6 +68,7 @@ void	ft_fill_visited_map(t_mapstats *ms)
 		while (ms->x_c < (ms->x_len - 1))
 		{
 			ms->map_visit[ms->y_c][ms->x_c] = 0;
+			ms->x_c++;
 		}
 		ms->y_c++;
 	}
@@ -69,8 +81,8 @@ int	ft_search_map(t_mapstats *ms)
 	if (ms->map_visit[ms->y_p][ms->x_p])
 		return (1);
 	ms->map_visit[ms->y_p][ms->x_p] = 1;
-	if (move_up(ms) == 0 || move_down(ms) == 0 || move_left(ms) == 0 ||
-		move_right(ms) == 0)
+	if (move_up(ms) == 0 || move_down(ms) == 0 || move_left(ms) == 0
+		|| move_right(ms) == 0)
 		return (0);
 	return (1);
 }
