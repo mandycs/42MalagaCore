@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 22:59:23 by marvin            #+#    #+#             */
-/*   Updated: 2024/02/10 15:25:52 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/12 21:35:03 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int	move_up(t_mapstats *ms)
 {

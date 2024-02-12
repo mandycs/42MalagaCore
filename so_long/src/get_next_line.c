@@ -6,11 +6,11 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 20:24:03 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/10 21:03:37 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/12 21:35:18 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 char	*get_next_line(int fd)
 {
