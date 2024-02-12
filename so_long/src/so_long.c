@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 21:13:17 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/12 21:35:32 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/12 22:08:17 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (ft_validate_map(&ms, argv[1]) == 1)
 		return (1);
+	ft_create_window(&ms);
 	
 	return (0);
 }
