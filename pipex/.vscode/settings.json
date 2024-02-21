@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "ft_printf.h": "c"
+        "ft_printf.h": "c",
+        "pipex.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

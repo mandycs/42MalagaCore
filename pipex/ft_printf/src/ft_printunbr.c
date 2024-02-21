@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:23:08 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/21 00:15:02 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:55:48 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_unumlen(unsigned int n)
 	unsigned int	i;
 
 	i = 0;
-
 	if (n <= 9)
 	{
 		i++;

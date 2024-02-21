@@ -26,7 +26,7 @@ FTTO		=	ft_atoi ft_itoa ft_tolower ft_toupper
 FTSTR_DIR	=	ft_str/
 FTSTR		=	ft_count_words ft_fill_array ft_indexchar ft_invert ft_split ft_strcat \
 				ft_strchr ft_strcmp ft_strcpy ft_strdup ft_striteri	ft_strjoin ft_strlcat \
-				ft_strlcpy ft_strlen_2 ft_strlen ft_strmapi ft_strncat ft_strncmp ft_strncpy \
+				ft_strlcpy ft_strlen ft_strmapi ft_strncat ft_strncmp ft_strncpy \
 				ft_strndup ft_strncmp ft_strnstr ft_strrchr ft_strstr ft_strtrim ft_substr
 
 FTLST_DIR	=	ft_lst/

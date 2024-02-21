@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:11:23 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/21 17:00:03 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:41:28 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,25 @@
 
 # include "../ft_printf/include/ft_printf.h"
 # include "../ft_printf/include/libft.h"
-
-# include <stdio.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include <unistd.h>
-
 
 typedef struct s_pipex
 {
-    int     fd;
-    int		fd2;
-    int		i;
+	int		fd[2];
+	int		i;
 	char	*path;
-	char   **cmds;
+	char	**cmds;
 	int		len_p;
-}   t_pipex;
+	char	*original_path;
+	char	**cmds_cpy;
+	int		n_str;
+	char	**cmd1;
+	char	**cmd2;
+	char	*pathcmd;
+	char	*pathcmd2;
+}			t_pipex;
 
 
 #endif
