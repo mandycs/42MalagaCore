@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 14:31:28 by mancorte          #+#    #+#             */
-/*   Updated: 2023/06/18 00:43:57 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/21 00:11:00 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdint.h>
 
 /**
  * @brief This function print exacly the same and 
@@ -32,6 +33,7 @@ int		ft_printf(char const *str, ...);
  * @param args 
  * @param format 
  * @return int 
+
  */
 int		ft_cases(va_list args, const char format);
 int		ft_printstr(char *str);
@@ -45,5 +47,6 @@ int		ft_printhex(unsigned int pt, char format);
 int		ft_numlenhex(unsigned int nb);
 void	ft_puthex(unsigned int nb, char format);
 int		ft_ptrlen(unsigned long long nb);
+
 void	ft_putptr(uintptr_t nb);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 23:52:45 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/03 19:13:03 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/21 00:18:22 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 	char_src = (char *)src;
 	char_dest = (char *)dest;
 	i = 0;
-	if ((char)dest == '\0' && (char)src == '\0')
+	if (dest == NULL && src == NULL)
 		return (dest);
 	if (dest > src)
 	{

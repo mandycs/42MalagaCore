@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:11:23 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/20 00:03:36 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:00:03 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_pipex
     int		fd2;
     int		i;
 	char	*path;
+	char   **cmds;
+	int		len_p;
 }   t_pipex;
 
 

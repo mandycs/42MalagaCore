@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printunbr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 17:23:08 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/28 18:09:13 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/21 00:15:02 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int	ft_unumlen(unsigned int n)
 	unsigned int	i;
 
 	i = 0;
-	if (n < 0)
-		i++;
+
 	if (n <= 9)
 	{
 		i++;
@@ -49,7 +48,7 @@ char	*ft_uitoa(unsigned int n)
 		str[i++] = nb % 10 + 48;
 		nb = nb / 10;
 	}
-	if (nb >= 0 && nb <= 9)
+	if (nb <= 9)
 		str[i++] = nb + 48;
 	str[i] = '\0';
 	str = ft_invert(str);
