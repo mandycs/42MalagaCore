@@ -1,7 +1,12 @@
 {
     "files.associations": {
         "ft_printf.h": "c",
-        "pipex.h": "c"
+        "pipex.h": "c",
+        "stdio.h": "c"
     },
-    "C_Cpp.errorSquiggles": "disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "C_Cpp.intelliSenseEngineFallback": "enabled",
+    "C_Cpp.codeAnalysis.clangTidy.checks.disabled": [
+        "clang-diagnostic-error"
+    ]
 }
