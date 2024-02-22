@@ -6,13 +6,13 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:07:57 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/22 00:31:15 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:43:57 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-int ft_open_files(t_pipex *px, char **argv)
+int	ft_open_files(t_pipex *px, char **argv)
 {
 	px->fd[0] = open(argv[1], O_RDONLY);
 	px->fd[1] = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -29,8 +29,8 @@ int ft_open_files(t_pipex *px, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-	// Esto busca el path en el envp
-int ft_find_path(t_pipex *px, char **envp)
+// Esto busca el path en el envp
+int	ft_find_path(t_pipex *px, char **envp)
 {
 	px->i = 0;
 	while (envp[px->i] != NULL)
@@ -57,7 +57,7 @@ int ft_find_path(t_pipex *px, char **envp)
 	return (EXIT_SUCCESS);
 }
 
-int ft_prepare_cmds(t_pipex *px, char **argv)
+int	ft_prepare_cmds(t_pipex *px, char **argv)
 {
 	px->cmds_cpy = malloc(sizeof(char *) * px->len_p);
 	if (px->cmds_cpy == NULL)
@@ -73,16 +73,18 @@ int ft_prepare_cmds(t_pipex *px, char **argv)
 		px->cmds_cpy[px->i] = malloc(sizeof(char) * ft_strlen(px->cmds[px->i]));
 		if (px->cmds_cpy[px->i] == NULL)
 		{
-			free(px->cmds_cpy);//Cambiarlo por la funcion de free bidimensioanl
+			free(px->cmds_cpy);
+			// Cambiarlo por la funcion de free bidimensioanl
 			exit(EXIT_FAILURE);
 		}
 		px->cmds_cpy[px->i] = ft_strcpy(px->cmds_cpy[px->i], px->cmds[px->i]);
 		px->i++;
 	}
+	return (EXIT_SUCCESS);
 }
-int ft_join_cmds(t_pipex *px)
+
+int	ft_join_cmds(t_pipex *px)
 {
-	px-> = 0;
 	px->i = 0;
 	while (px->i < px->len_p)
 	{
@@ -90,7 +92,8 @@ int ft_join_cmds(t_pipex *px)
 		px->cmds_cpy[px->i] = ft_strjoin(px->cmds_cpy[px->i], px->cmd2[0]);
 		px->i++;
 	}
-	while (px-> < px->len_p)
+	px->i = 0;
+	while (px->i < px->len_p)
 	{
 		if (access(px->cmds[px->i], F_OK) == 0)
 			break ;
