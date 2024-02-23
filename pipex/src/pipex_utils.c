@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:07:57 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/22 11:43:57 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/23 12:09:21 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,10 @@ int	ft_find_path(t_pipex *px, char **envp)
 	{
 		if (ft_strstr(envp[px->i], "PATH") != 0)
 		{
-			px->len_p = ft_strlen(envp[px->i]);
+			px->len_p = ft_strlen(envp[px->i]) + 1;
 			px->path = malloc(sizeof(char) * px->len_p);
 			if (px->path == NULL)
-			{
-				free(px->path);
 				exit(EXIT_FAILURE);
-			}
 			px->original_path = px->path;
 			px->path = ft_strstr(envp[px->i], "PATH");
 		}
@@ -51,6 +48,8 @@ int	ft_find_path(t_pipex *px, char **envp)
 	}
 	px->path += 5;
 	px->cmds = ft_split_p(px->path, ':', px);
+	if (px->cmds == NULL)
+		exit(EXIT_FAILURE);
 	px->len_p = px->n_str;
 	px->i = 0;
 	free(px->original_path);
@@ -66,15 +65,13 @@ int	ft_prepare_cmds(t_pipex *px, char **argv)
 		free(px->cmds_cpy);
 	}
 	px->cmd1 = ft_split_p(argv[2], ' ', px);
-	px->cmd2 = ft_split_p(argv[3], ' ', px);
 	while (px->i < px->len_p)
 	{
 		px->cmds[px->i] = ft_strjoin(px->cmds[px->i], "/");
 		px->cmds_cpy[px->i] = malloc(sizeof(char) * ft_strlen(px->cmds[px->i]));
 		if (px->cmds_cpy[px->i] == NULL)
 		{
-			free(px->cmds_cpy);
-			// Cambiarlo por la funcion de free bidimensioanl
+			ft_free_arrays(px, "cmds_cpy");
 			exit(EXIT_FAILURE);
 		}
 		px->cmds_cpy[px->i] = ft_strcpy(px->cmds_cpy[px->i], px->cmds[px->i]);
@@ -83,8 +80,9 @@ int	ft_prepare_cmds(t_pipex *px, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-int	ft_join_cmds(t_pipex *px)
+int	ft_join_cmds(t_pipex *px, char **argv)
 {
+	px->cmd2 = ft_split_p(argv[3], ' ', px);
 	px->i = 0;
 	while (px->i < px->len_p)
 	{
@@ -111,17 +109,18 @@ int	ft_join_cmds(t_pipex *px)
 	return (EXIT_SUCCESS);
 }
 
-char	**ft_split_p(char const *s, char c, t_pipex *pipex)
+char	**ft_split_p(char const *s, char c, t_pipex *px)
 {
-	char	**strs;
-
 	if (!s)
 		return (NULL);
-	pipex->n_str = ft_count_words(s, c);
-	strs = (char **)malloc((sizeof(char *) * (pipex->n_str + 1)));
-	if (!strs)
+	px->n_str = ft_count_words(s, c);
+	px->strs = (char **)malloc((sizeof(char *) * (px->n_str + 1)));
+	if (px->strs == NULL)
+	{
+		ft_free_arrays(px, "strs");
 		return (NULL);
-	ft_fill_array(strs, s, c);
-	strs[pipex->n_str] = NULL;
-	return (strs);
+	}
+	ft_fill_array(px->strs, s, c);
+	px->strs[px->n_str] = NULL;
+	return (px->strs);
 }

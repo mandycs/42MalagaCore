@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:56:59 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/22 11:43:05 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:43:09 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	ft_fork_process(t_pipex *px, char **argv, char **envp)
 			waitpid(px->pid1, &px->status, 0);
 		}
 	}
+	ft_frees(px);
 	return (EXIT_SUCCESS);
 }
 
@@ -133,7 +134,7 @@ int	ft_open_prepare_cmds(t_pipex *px, char **argv, char **envp)
 		exit(EXIT_FAILURE);
 	if (ft_prepare_cmds(px, argv) == EXIT_FAILURE)
 		exit(EXIT_FAILURE);
-	if (ft_join_cmds(px) == EXIT_FAILURE)
+	if (ft_join_cmds(px, argv) == EXIT_FAILURE)
 		exit(EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

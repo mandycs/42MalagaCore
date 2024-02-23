@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:11:23 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/22 11:42:58 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/23 11:46:15 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ typedef struct s_pipex
 	int		fd_in;
 	int		fd_out;
 	int		status;
+	int		j;
+	int		k;
+	char	**strs;
 }			t_pipex;
 
 char		**ft_split_p(char const *s, char c, t_pipex *pipex);
@@ -47,9 +50,11 @@ int			ft_open_prepare_cmds(t_pipex *px, char **argv, char **envp);
 int			ft_open_files(t_pipex *px, char **argv);
 int			ft_find_path(t_pipex *px, char **envp);
 int			ft_prepare_cmds(t_pipex *px, char **argv);
-int			ft_join_cmds(t_pipex *px);
+int			ft_join_cmds(t_pipex *px, char **argv);
 int			ft_execute_first_command(t_pipex *px, char **argv, char **envp);
 int			ft_fork_process(t_pipex *px, char **argv, char **envp);
 int			ft_execute_second_command(t_pipex *px, char **argv, char **envp);
+void		ft_free_arrays(t_pipex *px, char *flag);
+void		ft_frees(t_pipex *px);
 
 #endif
