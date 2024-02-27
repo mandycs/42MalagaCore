@@ -2,7 +2,7 @@
 PIPEX = pipex
 PIPEX_SRC_DIR = src/
 PIPEX_OBJ_DIR = obj/
-PIPEX_SRC_FILES = pipex pipex_utils pipex_utils_2
+PIPEX_SRC_FILES = pipex pipex_utils pipex_utils_2 pipex_utils_3
 PIPEX_SRC = $(addprefix $(PIPEX_SRC_DIR), $(addsuffix .c, $(PIPEX_SRC_FILES)))
 PIPEX_OBJ = $(addprefix $(PIPEX_OBJ_DIR), $(addsuffix .o, $(PIPEX_SRC_FILES)))
 

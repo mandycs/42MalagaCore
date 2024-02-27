@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:07:57 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/26 17:39:07 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/27 22:18:42 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_find_path(t_pipex *px, char **envp)
 	px->i = 0;
 	while (envp[px->i] != NULL)
 	{
-		if (ft_strstr(envp[px->i], "PATH") != 0)
+		if (ft_strncmp(envp[px->i], "PATH=", 5) == 0)
 		{
 			px->len_p = ft_strlen(envp[px->i]) + 1;
 			px->path = malloc(sizeof(char) * px->len_p);
@@ -55,6 +55,8 @@ int	ft_find_path(t_pipex *px, char **envp)
 		}
 		px->i++;
 	}
+	if(envp[px->i] == NULL)
+		return (3);
 	px->path += 5;
 	px->cmds = ft_split_p(px->path, ':', px);
 	free(px->original_path);
@@ -97,8 +99,10 @@ int	ft_join_cmds(t_pipex *px, char **argv)
 		px->cmds2[px->i] = ft_strjoin(px->cmds2[px->i], px->cmd2[0]);
 		px->i++;
 	}
-	if (ft_check_cmds(px) == EXIT_FAILURE)
-		exit(EXIT_FAILURE);
+	if (px->q == 0)
+		ft_check_cmd1(px);
+	if (px->q2 == 0)
+		ft_check_cmd2(px);
 	return (EXIT_SUCCESS);
 }
 
