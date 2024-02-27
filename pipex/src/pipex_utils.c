@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 00:07:57 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/27 22:18:42 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/28 00:36:23 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	ft_prepare_cmds(t_pipex *px, char **argv)
 		free(px->cmds2);
 		exit(EXIT_FAILURE);
 	}
-	px->cmd1 = ft_split_p(argv[2], ' ', px);
 	while (px->i < px->len_p)
 	{
 		px->cmds[px->i] = ft_strjoin(px->cmds[px->i], "/");
@@ -86,16 +85,24 @@ int	ft_prepare_cmds(t_pipex *px, char **argv)
 		px->cmds2[px->i] = ft_strcpy(px->cmds2[px->i], px->cmds[px->i]);
 		px->i++;
 	}
+	if (px->q == 0)
+		px->cmd1 = ft_split_p(argv[2], ' ', px);
+	if (px->q2 == 0)
+		px->cmd2 = ft_split_p(argv[3], ' ', px);
 	return (EXIT_SUCCESS);
 }
 
-int	ft_join_cmds(t_pipex *px, char **argv)
+int	ft_join_cmds(t_pipex *px)
 {
-	px->cmd2 = ft_split_p(argv[3], ' ', px);
 	px->i = 0;
-	while (px->i < px->len_p)
+	while (px->i < px->len_p && px->q == 0)
 	{
 		px->cmds[px->i] = ft_strjoin(px->cmds[px->i], px->cmd1[0]);
+		px->i++;
+	}
+	px->i = 0;
+	while(px->i < px->len_p && px->q2 == 0)
+	{
 		px->cmds2[px->i] = ft_strjoin(px->cmds2[px->i], px->cmd2[0]);
 		px->i++;
 	}

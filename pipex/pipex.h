@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:11:23 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/27 21:30:39 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/28 00:36:39 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int			ft_open_prepare_cmds(t_pipex *px, char **argv, char **envp);
 int			ft_open_files(t_pipex *px, char **argv);
 int			ft_find_path(t_pipex *px, char **envp);
 int			ft_prepare_cmds(t_pipex *px, char **argv);
-int			ft_join_cmds(t_pipex *px, char **argv);
+int			ft_join_cmds(t_pipex *px);
 int			ft_execute_first_command(t_pipex *px, char **argv, char **envp);
 int			ft_fork_process(t_pipex *px, char **argv, char **envp);
 int			ft_execute_second_command(t_pipex *px, char **argv, char **envp);

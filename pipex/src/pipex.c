@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:56:59 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/27 22:41:48 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/28 00:36:28 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,28 +117,20 @@ int	ft_execute_second_command(t_pipex *px, char **argv, char **envp)
 int	ft_open_prepare_cmds(t_pipex *px, char **argv, char **envp)
 {
 	ft_open_files(px, argv);
-	if (ft_find_path(px, envp) == 3)
-	{	
-		if (ft_check_cmds(px, argv) == EXIT_FAILURE)
-		{
-			perror("Error: Command not found");
-			exit(EXIT_FAILURE);
-		}
-		if (px->q == 1)
-			px->pathcmd = px->cmd1[0];
-		if (px->q2 == 1)
-			px->pathcmd2 = px->cmd2[0];
-		if (px->q == 0 || px->q2 == 0)
-		{
-			perror("Error: Command not found");
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
+	if (ft_check_cmds(px, argv) == EXIT_FAILURE)
 	{
-		ft_prepare_cmds(px, argv);
-		ft_join_cmds(px, argv);
+		perror("Error: Command not found");
+		exit(EXIT_FAILURE);
 	}
+	if (px->q == 1)
+		px->pathcmd = px->cmd1[0];
+	if (px->q2 == 1)
+		px->pathcmd2 = px->cmd2[0];
+	if (px->q == 1 && px->q2 == 1)
+		return (EXIT_SUCCESS);
+	ft_find_path(px, envp);
+	ft_prepare_cmds(px, argv);
+	ft_join_cmds(px);
 	return (EXIT_SUCCESS);
 }
 
