@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 23:11:23 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/23 11:46:15 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:51:22 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_pipex
 	char	**cmds;
 	int		len_p;
 	char	*original_path;
-	char	**cmds_cpy;
+	char	**cmds2;
 	int		n_str;
 	char	**cmd1;
 	char	**cmd2;
@@ -42,6 +42,8 @@ typedef struct s_pipex
 	int		j;
 	int		k;
 	char	**strs;
+	char	*path_env;
+	int		p;
 }			t_pipex;
 
 char		**ft_split_p(char const *s, char c, t_pipex *pipex);
@@ -56,5 +58,7 @@ int			ft_fork_process(t_pipex *px, char **argv, char **envp);
 int			ft_execute_second_command(t_pipex *px, char **argv, char **envp);
 void		ft_free_arrays(t_pipex *px, char *flag);
 void		ft_frees(t_pipex *px);
+int			ft_check_cmds(t_pipex *px);
+void		ft_free_arrays_2(t_pipex *px, char *flag);
 
 #endif
