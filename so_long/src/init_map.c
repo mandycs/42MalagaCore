@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 21:41:43 by mancorte          #+#    #+#             */
-/*   Updated: 2024/03/06 21:02:35 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:04:26 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	ft_iniciate(t_mapstats *ms)
 int	ft_create_window(t_mapstats *ms)
 {
 	ft_iniciate(ms);
+	ms->c_count = 0;
+	ms->s_count = 0;
 	mlx_key_hook(ms->mlx, ft_move, ms);
 	mlx_loop(ms->mlx);
 	return (0);
@@ -45,7 +47,6 @@ int	ft_create_window(t_mapstats *ms)
 void	ft_print_map(t_mapstats *ms)
 {
 	ms->i = 0;
-	ms->c_count = 0;
 	while (ms->i < ms->y_len)
 	{
 		ms->j = 0;
@@ -55,12 +56,14 @@ void	ft_print_map(t_mapstats *ms)
 			if (ms->map[ms->i][ms->j] == '1')
 				mlx_image_to_window(ms->mlx, ms->wall, ms->j * 64, ms->i * 64);
 			else if (ms->map[ms->i][ms->j] == 'C')
-				mlx_image_to_window(ms->mlx, ms->collectible, ms->j * 64, ms->i * 64);
+				mlx_image_to_window(ms->mlx, ms->collectible, ms->j * 64, ms->i
+					* 64);
 			else if (ms->map[ms->i][ms->j] == 'E')
 				mlx_image_to_window(ms->mlx, ms->exit, ms->j * 64, ms->i * 64);
 			else if (ms->map[ms->i][ms->j] == 'P')
 			{
-				mlx_image_to_window(ms->mlx, ms->player, ms->j * 64, ms->i * 64);
+				mlx_image_to_window(ms->mlx, ms->player, ms->j * 64, ms->i
+					* 64);
 				ms->pos_x = ms->j;
 				ms->pos_y = ms->i;
 			}

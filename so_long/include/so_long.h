@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:09:12 by mancorte          #+#    #+#             */
-/*   Updated: 2024/03/06 21:22:42 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:12:19 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_mapstats
 	int				y;
 	int				c;
 	int				c_count;
+	int				s_count;
 	int				p;
 	int				e;
 	int				x_len;

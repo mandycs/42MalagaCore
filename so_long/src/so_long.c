@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 21:13:17 by mancorte          #+#    #+#             */
-/*   Updated: 2024/03/06 20:10:18 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/03/06 22:12:58 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,3 @@ int	ft_save_map(t_mapstats *ms)
 	}
 	return (0);
 }
-
-// ms->y = 0;
-// while (ms->map[ms->y] != NULL)
-// {
-// 	printf("%s", ms->map[ms->y]);
-// 	free(ms->map[ms->y]);
-// 	ms->y++;
-// }
-// return (0);
