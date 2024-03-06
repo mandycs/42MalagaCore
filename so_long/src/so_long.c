@@ -6,12 +6,11 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 21:13:17 by mancorte          #+#    #+#             */
-/*   Updated: 2024/02/12 22:08:17 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:10:18 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -22,7 +21,6 @@ int	main(int argc, char **argv)
 	if (ft_validate_map(&ms, argv[1]) == 1)
 		return (1);
 	ft_create_window(&ms);
-	
 	return (0);
 }
 
@@ -74,7 +72,7 @@ int	ft_save_map(t_mapstats *ms)
 			return (-1);
 		}
 		ft_memcpy(ms->map[ms->y], ms->line, ft_strlen(ms->line) + 1);
-		free (ms->line);
+		free(ms->line);
 		ms->y++;
 		ms->line = get_next_line(ms->fd);
 	}

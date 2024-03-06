@@ -7,7 +7,7 @@ MLX42   = -L MLX42 -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit
 
 SRC_DIR = src
 OBJ_DIR = obj
-SRC_FILES = so_long.c get_next_line.c get_next_line_utils.c check_map.c check_map_2.c check_map_3.c init_map.c
+SRC_FILES = so_long.c get_next_line.c get_next_line_utils.c check_map.c check_map_2.c check_map_3.c init_map.c move.c move_2.c
 SRCS    = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS    = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
