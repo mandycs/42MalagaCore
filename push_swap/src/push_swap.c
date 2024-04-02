@@ -24,8 +24,6 @@ int main(int argc, char **argv)
 		ft_prepare_stack_2(ps, argc, argv);
 	if (ft_prepare_stack(ps, argc, argv) == 1)
 		return (1);
-	if (ps->stack_b->size > 3)
-		ft_prepare_stack_b(ps);
 	return (0);
 }
 
