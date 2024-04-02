@@ -17,13 +17,8 @@ int ft_prepare_stack_2(t_push_swap *ps, int argc, char **argv)
 	int i;
 
 	i = 0;
-	while (i < argc)
-	{
-		if (ft_isdigit(argv[1][i]) == 0)
-			i++;
-		else
-			return (1);
-	}
+	if (ft_isdigit(argv[1]) == 1)
+		return (1);
 	ps->split = ft_split(argv[1], ' ');
 
 	return (0);
