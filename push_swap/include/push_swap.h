@@ -32,12 +32,13 @@ typedef struct s_push_swap
     int        i_args;
     t_stack    *stack_a;
     t_stack    *stack_b;
+	char		**split;
 }				t_push_swap;
 
 
 int main(int argc, char **argv);
 t_stack *ft_init_stack(void);
-int		ft_prepare_stack(t_stack *stack, int argc, char **argv);
+int		ft_prepare_stack(t_push_swap *ps, int argc, char **argv);
 int		ft_atoi(char *str);
 int		ft_isdigit(char *str);
 int		ft_push(t_stack *stack, int value);
@@ -51,6 +52,13 @@ void	ft_rotate_b(t_stack *stack_b);
 void	ft_rotate_rr(t_stack *stack_a, t_stack *stack_b);
 void	ft_reverse_rotate_a(t_stack *stack_a);
 void	ft_reverse_rotate_b(t_stack *stack_b);
+int 	ft_prepare_stack_2(t_push_swap *ps, int argc, char **argv);
+char	**ft_split(char const *s, char c);
+int		ft_count_words(char const *s, char c);
+int		ft_strlen(char *str);
+char	**ft_fill_array(char **strs, char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 
 #endif

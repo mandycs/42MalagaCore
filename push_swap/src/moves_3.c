@@ -24,3 +24,17 @@ void	ft_prepare_stack_b(t_push_swap *ps)
 	ft_push_a(ps->stack_a, ps->stack_b);
 	ft_push_a(ps->stack_a, ps->stack_b);
 }
+
+int	ft_push(t_stack *stack, int value)
+{
+	t_node *new;
+
+	new = (t_node *)malloc(sizeof(t_node));
+	if (!new)
+		return (1);
+	new->value = value;
+	new->next = stack->head;
+	stack->head = new;
+	stack->size++;
+	return (0);
+}

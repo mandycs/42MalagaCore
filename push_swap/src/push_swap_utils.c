@@ -56,16 +56,67 @@ int	ft_isdigit(char *str)
 	return (1);
 }
 
-int	ft_push(t_stack *stack, int value)
 {
-	t_node *new;
+	char	**strs;
+	int		n_str;
+	int		i;
 
-	new = (t_node *)malloc(sizeof(t_node));
-	if (!new)
-		return (1);
-	new->value = value;
-	new->next = stack->head;
-	stack->head = new;
-	stack->size++;
-	return (0);
+	i = 0;
+	if (!s)
+		return (NULL);
+	n_str = ft_count_words(s, c);
+	strs = (char **)malloc((sizeof(char *) * (n_str + 1)));
+	if (!strs)
+		return (NULL);
+	ft_fill_array(strs, s, c);
+	strs[n_str] = NULL;
+	return (strs);
+}
+
+int	ft_count_words(const char *s, char c)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] != c)
+		{
+			count++;
+			while (s[i] != c && s[i] != '\0')
+				i++;
+		}
+		else
+			i++;
+	}
+	return (count);
+}
+
+char	**ft_fill_array(char **strs, char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	size_t	k;
+
+	i = 0;
+	j = 0;
+	k = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] != '\0' && s[i] == c)
+			i++;
+		j = i;
+		while (s[i] != '\0' && s[i] != c)
+			i++;
+		if (j >= ft_strlen(s))
+		{
+			strs[k] = NULL;
+			k++;
+		}
+		else
+			strs[k++] = ft_substr(s, j, i - j);
+	}
+	return (strs);
 }
