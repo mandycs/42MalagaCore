@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_reverse_rotate_rr(t_stack *stack_a, t_stack *stack_b)
 {

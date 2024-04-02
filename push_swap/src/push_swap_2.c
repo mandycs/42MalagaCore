@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int ft_prepare_stack_2(t_push_swap *ps, int argc, char **argv)
 {
