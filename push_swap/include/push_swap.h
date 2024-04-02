@@ -52,7 +52,7 @@ void	ft_rotate_b(t_stack *stack_b);
 void	ft_rotate_rr(t_stack *stack_a, t_stack *stack_b);
 void	ft_reverse_rotate_a(t_stack *stack_a);
 void	ft_reverse_rotate_b(t_stack *stack_b);
-int 	ft_prepare_stack_2(t_push_swap *ps, int argc, char **argv);
+int 	ft_prepare_stack_2(t_push_swap *ps, char **argv);
 char	**ft_split(char const *s, char c);
 int		ft_count_words(char const *s, char c);
 int		ft_strlen(char *str);
