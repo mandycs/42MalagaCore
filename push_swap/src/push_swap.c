@@ -16,12 +16,12 @@
 int main(int argc, char **argv)
 {
 	t_push_swap	*ps = malloc(sizeof(t_push_swap));
-	ps->stack_a = ft_init_stack();
-	ps->stack_b = ft_init_stack();
+	ps->stack_a = NULL;
+	ps->stack_b = NULL;
 	if (argc < 2)
 		return (1);
-	if (!ps->stack_a || !ps->stack_b)
-		return (1);
+	if (argc == 2)
+		ft_prepare_stack_2(ps, argc, argv);
 	if (ft_prepare_stack(ps, argc, argv) == 1)
 		return (1);
 	ft_prepare_stack_b(ps);
