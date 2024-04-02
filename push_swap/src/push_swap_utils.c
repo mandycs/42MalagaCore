@@ -95,7 +95,7 @@ int	ft_count_words(const char *s, char c)
 	return (count);
 }
 
-char	**ft_fill_array(char **strs, char const *s, char c)
+char	**ft_fill_array(char **strs, char *s, char c)
 {
 	size_t	i;
 	size_t	j;

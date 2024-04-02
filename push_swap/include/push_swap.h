@@ -56,7 +56,7 @@ int 	ft_prepare_stack_2(t_push_swap *ps, char **argv);
 char	**ft_split(char const *s, char c);
 int		ft_count_words(char const *s, char c);
 int		ft_strlen(char *str);
-char	**ft_fill_array(char **strs, char const *s, char c);
+char	**ft_fill_array(char **strs, char *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
