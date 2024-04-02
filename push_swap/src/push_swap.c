@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	if (argc == 2)
-		ft_prepare_stack_2(ps, argc, argv);
+		ft_prepare_stack_2(ps, argv);
 	if (ft_prepare_stack(ps, argc, argv) == 1)
 		return (1);
 	return (0);
