@@ -56,6 +56,7 @@ int	ft_isdigit(char *str)
 	return (1);
 }
 
+char	**ft_split(char const *s, char c)
 {
 	char	**strs;
 	int		n_str;
