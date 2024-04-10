@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:50:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/19 13:50:05 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/10 19:18:56 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_rotate_a(t_stack *stack_a)
 {
-	t_node *first;
-	t_node *last;
+	t_node	*first;
+	t_node	*last;
 
 	if (stack_a->size < 2)
 		return ;
@@ -30,8 +30,8 @@ void	ft_rotate_a(t_stack *stack_a)
 
 void	ft_rotate_b(t_stack *stack_b)
 {
-	t_node *first;
-	t_node *last;
+	t_node	*first;
+	t_node	*last;
 
 	if (stack_b->size < 2)
 		return ;
@@ -52,9 +52,9 @@ void	ft_rotate_rr(t_stack *stack_a, t_stack *stack_b)
 
 void	ft_reverse_rotate_a(t_stack *stack_a)
 {
-	t_node *first;
-	t_node *last;
-	t_node *before_last;
+	t_node	*first;
+	t_node	*last;
+	t_node	*before_last;
 
 	if (stack_a->size < 2)
 		return ;
@@ -73,9 +73,9 @@ void	ft_reverse_rotate_a(t_stack *stack_a)
 
 void	ft_reverse_rotate_b(t_stack *stack_b)
 {
-	t_node *first;
-	t_node *last;
-	t_node *before_last;
+	t_node	*first;
+	t_node	*last;
+	t_node	*before_last;
 
 	if (stack_b->size < 2)
 		return ;

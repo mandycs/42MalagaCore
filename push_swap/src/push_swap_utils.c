@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:32:30 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/19 00:32:30 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/10 19:19:35 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_atoi(char *str)
 
 int	ft_isdigit(char *str)
 {
-	int c;
+	int	c;
 
 	c = 0;
 	if (str[c] == '-' || str[c] == '+')
@@ -50,10 +50,10 @@ int	ft_isdigit(char *str)
 	while (str[c])
 	{
 		if (str[c] < '0' || str[c] > '9')
-			return (0);
+			return (1);
 		c++;
 	}
-	return (1);
+	return (0);
 }
 
 char	**ft_split(char *s, char c, t_push_swap *ps)

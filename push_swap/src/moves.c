@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:41:59 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/19 13:41:59 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/10 19:18:21 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-
-void ft_swap_a(t_stack *stack_a)
+void	ft_swap_a(t_stack *stack_a)
 {
-	t_node *first;
-	t_node *second;
+	t_node	*first;
+	t_node	*second;
 
 	if (stack_a->size < 2)
 		return ;
@@ -27,10 +26,10 @@ void ft_swap_a(t_stack *stack_a)
 	second->next = first;
 }
 
-void ft_swap_b(t_stack *stack_b)
+void	ft_swap_b(t_stack *stack_b)
 {
-	t_node *first;
-	t_node *second;
+	t_node	*first;
+	t_node	*second;
 
 	if (stack_b->size < 2)
 		return ;
@@ -41,15 +40,15 @@ void ft_swap_b(t_stack *stack_b)
 	second->next = first;
 }
 
-void ft_swap_ss(t_stack *stack_a, t_stack *stack_b)
+void	ft_swap_ss(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_swap_a(stack_a);
 	ft_swap_b(stack_b);
 }
 
-void ft_push_a(t_stack *stack_a, t_stack *stack_b)
+void	ft_push_a(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node *first;
+	t_node	*first;
 
 	if (stack_b->size == 0)
 		return ;
@@ -61,9 +60,9 @@ void ft_push_a(t_stack *stack_a, t_stack *stack_b)
 	stack_b->size--;
 }
 
-void ft_push_b(t_stack *stack_a, t_stack *stack_b)
+void	ft_push_b(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node *first;
+	t_node	*first;
 
 	if (stack_a->size == 0)
 		return ;

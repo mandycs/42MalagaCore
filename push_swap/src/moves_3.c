@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:53:21 by marvin            #+#    #+#             */
-/*   Updated: 2024/03/19 13:53:21 by marvin           ###   ########.fr       */
+/*   Updated: 2024/04/10 19:19:46 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_prepare_stack_b(t_push_swap *ps)
 
 int	ft_push(t_stack *stack, int value)
 {
-	t_node *new;
+	t_node	*new;
 
 	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)
