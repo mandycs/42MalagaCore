@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:49 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/10 19:17:41 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/10 23:42:48 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 typedef struct s_node
 {
 	int				value;
+	int				act_pos;
+	int				targ_pos;
+	int				cos_a;
+	int				cos_b;
 	struct s_node	*next;
 }					t_node;
 
@@ -61,5 +65,8 @@ int					ft_check_doubles(t_push_swap *ps);
 char				*ft_substr(char *s, unsigned int start, size_t len);
 int					ft_strlen(char *str);
 t_stack				*ft_create_stack(void);
+void				ft_prepare_stack_a(t_push_swap *ps);
+void				ft_sort_three(t_stack *stack_a);
+void				print_stack_a(t_stack *stack_a);
 
 #endif

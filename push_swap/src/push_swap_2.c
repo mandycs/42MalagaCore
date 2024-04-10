@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:50:47 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/10 20:02:03 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:05:49 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	ft_prepare_stack_2(t_push_swap *ps, char **argv)
 		ft_push(ps->stack_b, ft_atoi(ps->split[i]));
 		i++;
 	}
+	if (ft_check_doubles(ps) == 1)
+		return (1);
+	if (ps->stack_b->size >= 3)
+		ft_prepare_stack_a(ps);
+	else
+		return (1);
 	return (0);
 }
 

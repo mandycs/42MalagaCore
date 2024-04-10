@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:50:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/10 19:18:56 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/10 22:34:18 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_rotate_a(t_stack *stack_a)
 	stack_a->head = first->next;
 	last->next = first;
 	first->next = NULL;
+	printf("ra\n");
 }
 
 void	ft_rotate_b(t_stack *stack_b)
@@ -42,12 +43,14 @@ void	ft_rotate_b(t_stack *stack_b)
 	stack_b->head = first->next;
 	last->next = first;
 	first->next = NULL;
+	printf("rb\n");
 }
 
 void	ft_rotate_rr(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_rotate_a(stack_a);
 	ft_rotate_b(stack_b);
+	printf("rr\n");
 }
 
 void	ft_reverse_rotate_a(t_stack *stack_a)
@@ -69,6 +72,7 @@ void	ft_reverse_rotate_a(t_stack *stack_a)
 	stack_a->head = last;
 	before_last->next = NULL;
 	last->next = first;
+	printf("rra\n");
 }
 
 void	ft_reverse_rotate_b(t_stack *stack_b)
@@ -90,4 +94,5 @@ void	ft_reverse_rotate_b(t_stack *stack_b)
 	stack_b->head = last;
 	before_last->next = NULL;
 	last->next = first;
+	printf("rrb\n");
 }

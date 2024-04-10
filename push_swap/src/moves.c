@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:41:59 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/10 19:18:21 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/10 22:37:06 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_swap_a(t_stack *stack_a)
 	stack_a->head = second;
 	first->next = second->next;
 	second->next = first;
+	printf("sa\n");
 }
 
 void	ft_swap_b(t_stack *stack_b)
@@ -38,12 +39,14 @@ void	ft_swap_b(t_stack *stack_b)
 	stack_b->head = second;
 	first->next = second->next;
 	second->next = first;
+	printf("sb\n");
 }
 
 void	ft_swap_ss(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_swap_a(stack_a);
 	ft_swap_b(stack_b);
+	printf("ss\n");
 }
 
 void	ft_push_a(t_stack *stack_a, t_stack *stack_b)
@@ -58,6 +61,7 @@ void	ft_push_a(t_stack *stack_a, t_stack *stack_b)
 	stack_a->head = first;
 	stack_a->size++;
 	stack_b->size--;
+	printf("pa\n");
 }
 
 void	ft_push_b(t_stack *stack_a, t_stack *stack_b)
@@ -72,4 +76,5 @@ void	ft_push_b(t_stack *stack_a, t_stack *stack_b)
 	stack_b->head = first;
 	stack_b->size++;
 	stack_a->size--;
+	printf("pb\n");
 }
