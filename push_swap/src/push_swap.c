@@ -44,6 +44,8 @@ t_stack *ft_init_stack(void)
 int	ft_prepare_stack(t_push_swap *ps, int argc, char **argv)
 {
 	ps->i_args = 1;
+	printf("%d\n", argc);
+	printf("%d\n", ps->i_args);
 	while (ps->i_args < argc)
 	{
 		if (ft_isdigit(argv[ps->i_args]))
