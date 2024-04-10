@@ -59,9 +59,7 @@ int	ft_isdigit(char *str)
 char	**ft_split(char *s, char c, t_push_swap *ps)
 {
 	char	**strs;
-	int		i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	ps->n_str = ft_count_words(s, c);
