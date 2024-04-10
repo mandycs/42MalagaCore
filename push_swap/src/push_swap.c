@@ -16,6 +16,7 @@
 int main(int argc, char **argv)
 {
 	t_push_swap	*ps = malloc(sizeof(t_push_swap));
+	printf("Estoy aqui\n");
 	ps->stack_a = NULL;
 	ps->stack_b = NULL;
 	if (argc < 2)

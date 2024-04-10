@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -62,4 +63,4 @@ int		ft_check_doubles(t_push_swap *ps);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 int		ft_strlen(char *str);
 
-#endif
+#en
