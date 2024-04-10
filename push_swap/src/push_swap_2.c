@@ -22,7 +22,7 @@ int ft_prepare_stack_2(t_push_swap *ps, char **argv)
 	ps->split = ft_split(argv[1], ' ', ps);
 	while (i < ps->n_str)
 	{
-		ft_push(ps->stack_b, ps->split[i]);
+		ft_push(ps->stack_b, ft_atoi(ps->split[i]));
 		i++;
 	}
 	return (0);
