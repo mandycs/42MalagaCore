@@ -56,21 +56,20 @@ int	ft_isdigit(char *str)
 	return (1);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c, t_push_swap *ps)
 {
 	char	**strs;
-	int		n_str;
 	int		i;
 
 	i = 0;
 	if (!s)
 		return (NULL);
-	n_str = ft_count_words(s, c);
+	ps->n_str = ft_count_words(s, c);
 	strs = (char **)malloc((sizeof(char *) * (n_str + 1)));
 	if (!strs)
 		return (NULL);
 	ft_fill_array(strs, s, c);
-	strs[n_str] = NULL;
+	strs[ps->n_str] = NULL;
 	return (strs);
 }
 

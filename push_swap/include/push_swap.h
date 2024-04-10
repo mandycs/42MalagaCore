@@ -33,6 +33,7 @@ typedef struct s_push_swap
     t_stack    *stack_a;
     t_stack    *stack_b;
 	char		**split;
+	int			n_str;
 }				t_push_swap;
 
 
@@ -53,7 +54,7 @@ void	ft_rotate_rr(t_stack *stack_a, t_stack *stack_b);
 void	ft_reverse_rotate_a(t_stack *stack_a);
 void	ft_reverse_rotate_b(t_stack *stack_b);
 int 	ft_prepare_stack_2(t_push_swap *ps, char **argv);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c, t_push_swap *ps);
 int		ft_count_words(char const *s, char c);
 int		ft_strlen(char *str);
 char	**ft_fill_array(char **strs, char *s, char c);
