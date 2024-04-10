@@ -65,7 +65,7 @@ char	**ft_split(char const *s, char c, t_push_swap *ps)
 	if (!s)
 		return (NULL);
 	ps->n_str = ft_count_words(s, c);
-	strs = (char **)malloc((sizeof(char *) * (n_str + 1)));
+	strs = (char **)malloc((sizeof(char *) * (ps->n_str + 1)));
 	if (!strs)
 		return (NULL);
 	ft_fill_array(strs, s, c);
@@ -96,9 +96,9 @@ int	ft_count_words(const char *s, char c)
 
 char	**ft_fill_array(char **strs, char *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	j = 0;
