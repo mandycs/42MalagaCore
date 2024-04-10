@@ -56,7 +56,7 @@ int	ft_isdigit(char *str)
 	return (1);
 }
 
-char	**ft_split(char const *s, char c, t_push_swap *ps)
+char	**ft_split(char *s, char c, t_push_swap *ps)
 {
 	char	**strs;
 	int		i;
@@ -73,7 +73,7 @@ char	**ft_split(char const *s, char c, t_push_swap *ps)
 	return (strs);
 }
 
-int	ft_count_words(const char *s, char c)
+int	ft_count_words(char *s, char c)
 {
 	int	i;
 	int	count;
