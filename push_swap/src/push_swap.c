@@ -48,6 +48,7 @@ int	ft_prepare_stack(t_push_swap *ps, int argc, char **argv)
 	printf("%d\n", ps->i_args);
 	while (ps->i_args < argc)
 	{
+		printf("Estoy aqui");
 		if (ft_isdigit(argv[ps->i_args]))
 		{
 			ft_push(ps->stack_b, ft_atoi(argv[ps->i_args]));
