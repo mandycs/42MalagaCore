@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:49 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/10 23:42:48 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:56:48 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ t_stack				*ft_create_stack(void);
 void				ft_prepare_stack_a(t_push_swap *ps);
 void				ft_sort_three(t_stack *stack_a);
 void				print_stack_a(t_stack *stack_a);
+void				ft_calc(t_push_swap *ps);
+void				ft_calc_pos(t_stack *stack);
 
 #endif

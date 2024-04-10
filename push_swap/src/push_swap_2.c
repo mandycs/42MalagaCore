@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:50:47 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/11 00:05:49 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:58:18 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,23 @@ t_stack	*ft_create_stack(void)
 	stack->head = NULL;
 	stack->size = 0;
 	return (stack);
+}
+
+void	ft_calc_pos(t_stack *stack)
+{
+	t_node	*current = stack->head;
+	int	pos = 0;
+	
+	while (current != NULL)
+	{
+		current->act_pos = pos;
+		pos++;
+		current = current->next;
+	}
+}
+
+void	ft_calc(t_push_swap *ps)
+{
+	ft_calc_pos(ps->stack_a);
+	ft_calc_pos(ps->stack_b);
 }
