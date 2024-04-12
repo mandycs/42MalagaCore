@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:36 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/11 00:56:21 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/12 03:59:06 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	main(int argc, char **argv)
 		if (ft_prepare_stack(ps, argc, argv) == 1)
 			return (1);
 	}
-	print_stack_a(ps->stack_a);
-	ft_sort_three(ps->stack_a);
-	print_stack_a(ps->stack_a);
+	ft_sort_three(ps->stack_a, ps);
 	ft_calc(ps);
+	ft_sort_a(ps);
+	print_stack_a(ps->stack_a);
 	return (0);
 }
 
@@ -77,27 +77,27 @@ int	ft_prepare_stack(t_push_swap *ps, int argc, char **argv)
 	return (0);
 }
 
-void	ft_sort_three(t_stack *stack_a)
+void	ft_sort_three(t_stack *stack_a, t_push_swap *ps)
 {
 	int top = stack_a->head->value;
 	int middle = stack_a->head->next->value;
 	int bottom = stack_a->head->next->next->value;
 
 	if (top > middle && middle < bottom && top < bottom)
-		ft_swap_a(stack_a);
+		ft_swap_a(ps);
 	else if (top < middle && middle > bottom && top > bottom)
-		ft_reverse_rotate_a(stack_a);
+		ft_reverse_rotate_a(ps);
 	else if (top > middle && middle > bottom)
 	{
-		ft_swap_a(stack_a);
-		ft_reverse_rotate_a(stack_a);
+		ft_swap_a(ps);
+		ft_reverse_rotate_a(ps);
 	}
 	else if (top > middle && middle < bottom && top > bottom)
-		ft_rotate_a(stack_a);
+		ft_rotate_a(ps);
 	else if (top < middle && middle > bottom && top < bottom)
 	{	
-		ft_reverse_rotate_a(stack_a);
-		ft_swap_a(stack_a);
+		ft_reverse_rotate_a(ps);
+		ft_swap_a(ps);
 	}
 }
 

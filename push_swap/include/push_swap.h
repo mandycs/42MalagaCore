@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:49 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/11 00:56:48 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/12 03:56:48 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_node
 	int				targ_pos;
 	int				cos_a;
 	int				cos_b;
+	int				tot_cos;
 	struct s_node	*next;
 }					t_node;
 
@@ -36,8 +37,14 @@ typedef struct s_push_swap
 {
 	t_stack			*stack_a;
 	t_stack			*stack_b;
+	t_node			*node_b;
+	t_node			*node_a;
+	t_node			*cheap_n;
 	char			**split;
 	int				n_str;
+	int				pos;
+	int				pos_found;
+	int				half_b;
 }					t_push_swap;
 
 int					main(int argc, char **argv);
@@ -46,16 +53,16 @@ int					ft_prepare_stack(t_push_swap *ps, int argc, char **argv);
 int					ft_atoi(char *str);
 int					ft_isdigit(char *str);
 int					ft_push(t_stack *stack, int value);
-void				ft_swap_a(t_stack *stack_a);
-void				ft_swap_b(t_stack *stack_b);
-void				ft_swap_ss(t_stack *stack_a, t_stack *stack_b);
-void				ft_push_a(t_stack *stack_a, t_stack *stack_b);
-void				ft_push_b(t_stack *stack_a, t_stack *stack_b);
-void				ft_rotate_a(t_stack *stack_a);
-void				ft_rotate_b(t_stack *stack_b);
-void				ft_rotate_rr(t_stack *stack_a, t_stack *stack_b);
-void				ft_reverse_rotate_a(t_stack *stack_a);
-void				ft_reverse_rotate_b(t_stack *stack_b);
+void				ft_swap_a(t_push_swap *ps);
+void				ft_swap_b(t_push_swap *ps);
+void				ft_swap_ss(t_push_swap *ps);
+void				ft_push_a(t_push_swap *ps);
+void				ft_push_b(t_push_swap *ps);
+void				ft_rotate_a(t_push_swap *ps);
+void				ft_rotate_b(t_push_swap *ps);
+void				ft_rotate_rr(t_push_swap *ps);
+void				ft_reverse_rotate_a(t_push_swap *ps);
+void				ft_reverse_rotate_b(t_push_swap *ps);
 int					ft_prepare_stack_2(t_push_swap *ps, char **argv);
 char				**ft_split(char *s, char c, t_push_swap *ps);
 int					ft_count_words(char *s, char c);
@@ -66,9 +73,19 @@ char				*ft_substr(char *s, unsigned int start, size_t len);
 int					ft_strlen(char *str);
 t_stack				*ft_create_stack(void);
 void				ft_prepare_stack_a(t_push_swap *ps);
-void				ft_sort_three(t_stack *stack_a);
+void				ft_sort_three(t_stack *stack_a, t_push_swap *ps);
 void				print_stack_a(t_stack *stack_a);
 void				ft_calc(t_push_swap *ps);
 void				ft_calc_pos(t_stack *stack);
+void				ft_calc_targ_pos(t_push_swap *ps);
+void				calculate_costs(t_push_swap *ps);
+int					calculate_cos_a(int targ_pos, int total);
+int					ft_abs(int x);
+t_node				*find_cheapest_node(t_stack *stack);
+void				ft_calc_sizes(t_push_swap *ps);
+void				ft_move_up(t_push_swap *ps);
+t_node				*ft_get_lower(t_stack *stack);
+int					ft_is_sort(t_stack *stack);
+void				ft_sort_a(t_push_swap *ps);
 
 #endif

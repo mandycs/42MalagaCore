@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:50:47 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/11 00:58:18 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/12 04:01:08 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,15 @@ void	ft_calc(t_push_swap *ps)
 {
 	ft_calc_pos(ps->stack_a);
 	ft_calc_pos(ps->stack_b);
+	ft_calc_sizes(ps);
+	while (ps->stack_b->size > 1)
+	{
+		ft_calc_targ_pos(ps);
+		calculate_costs(ps);
+		ps->cheap_n = find_cheapest_node(ps->stack_b);
+		ft_move_up(ps);
+		ft_calc_pos(ps->stack_a);
+		ft_calc_pos(ps->stack_b);
+		ft_calc_sizes(ps);
+	}
 }
