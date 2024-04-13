@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 12:32:26 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/12 03:36:54 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/13 22:15:54 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,16 @@
 
 void	ft_calc_targ_pos(t_push_swap *ps)
 {
-	ps->node_b = ps->stack_b->head;
-	while (ps->node_b)
+	t_node	*node_b;
+	int		maxint;
+
+	node_b = ps->stack_b->head;
+	maxint = 2147483647;
+	while (node_b)
 	{
-		ps->node_a = ps->stack_a->head;
-		ps->pos = 0;
-		ps->pos_found = 0;
-		while (ps->node_a && !ps->pos_found)
-		{
-			if (!ps->node_a->next || ps->node_b->value < ps->node_a->value
-				|| (ps->node_b->value > ps->node_a->value
-					&& ps->node_b->value < ps->node_a->next->value))
-			{
-				ps->node_b->targ_pos = ps->pos + (ps->node_a->next != NULL
-						&& ps->node_b->value > ps->node_a->value);
-				ps->pos_found = 1;
-			}
-			else if (ps->node_b->value < ps->node_a->value && ps->pos == 0)
-				ps->node_b->targ_pos = ps->pos, ps->pos_found = 1;
-			ps->pos++, ps->node_a = ps->node_a->next;
-		}
-		if (!ps->pos_found)
-			ps->node_b->targ_pos = ps->pos;
-		ps->node_b = ps->node_b->next;
+		ft_get_pos(ps->stack_a, node_b->value, maxint, ps);
+		node_b->targ_pos = ps->closestpos;
+		node_b = node_b->next;
 	}
 }
 
@@ -45,15 +32,14 @@ void	calculate_costs(t_push_swap *ps)
 	t_node	*node;
 
 	node = ps->stack_b->head;
-	ps->half_b = ps->stack_b->size / 2;
 	while (node != NULL)
 	{
-		if (node->act_pos <= ps->half_b)
-			node->cos_b = node->act_pos;
-		else
-			node->cos_b = -(ps->stack_b->size - node->act_pos);
-		node->cos_a = calculate_cos_a(node->targ_pos, ps->stack_a->size);
-		node->tot_cos = ft_abs(node->cos_b) +ft_abs(node->cos_a);
+		node->cos_b = node->act_pos;
+		if (node->act_pos > ps->stack_b->size / 2)
+			node->cos_b = (ps->stack_b->size - node->act_pos) * -1;
+		node->cos_a = node->targ_pos;
+		if (node->targ_pos > ps->stack_a->size / 2)
+			node->cos_a = (ps->stack_a->size - node->targ_pos) * -1;
 		node = node->next;
 	}
 }
@@ -71,30 +57,32 @@ int	calculate_cos_a(int targ_pos, int total)
 		return (backward);
 }
 
-int	ft_abs(int x)
+t_node	*find_cheapest_node(t_stack *stack)
 {
-	if (x < 0)
-		return (-x);
-	else
-		return (x);
+	t_node	*cheapest_node;
+	int		min_cost;
+	t_node	*current_node;
+
+	if (stack == NULL || stack->head == NULL)
+		return (NULL);
+	cheapest_node = stack->head;
+	min_cost = cheapest_node->tot_cos;
+	current_node = cheapest_node->next;
+	while (current_node != NULL)
+	{
+		if (current_node->tot_cos < min_cost)
+		{
+			min_cost = current_node->tot_cos;
+			cheapest_node = current_node;
+		}
+		current_node = current_node->next;
+	}
+	return (cheapest_node);
 }
 
-t_node *find_cheapest_node(t_stack *stack) {
-    if (stack == NULL || stack->head == NULL) {
-        return NULL;  // Asegura que hay nodos para procesar
-    }
-
-    t_node *cheapest_node = stack->head;
-    int min_cost = cheapest_node->tot_cos;
-    t_node *current_node = cheapest_node->next;
-
-    while (current_node != NULL) {
-        if (current_node->tot_cos < min_cost) {
-            min_cost = current_node->tot_cos;
-            cheapest_node = current_node;
-        }
-        current_node = current_node->next;
-    }
-
-    return cheapest_node;
+void	ft_get_pos(t_stack *stack_a, int num, int maxint, t_push_swap *ps)
+{
+	find_closest_above(stack_a, num, maxint, ps);
+	if (ps->closestpos == -1)
+		find_min_value(stack_a, maxint, ps);
 }

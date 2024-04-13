@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 01:02:00 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/12 04:01:31 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/13 22:15:22 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_sort_a(t_push_swap *ps)
 	}
 	else
 	{
-		while(!ft_is_sort(ps->stack_a))
+		while (!ft_is_sort(ps->stack_a))
 			ft_rotate_a(ps);
 	}
 }

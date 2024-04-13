@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:49 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/12 03:56:48 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/04/13 22:15:09 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ typedef struct s_push_swap
 	t_node			*node_b;
 	t_node			*node_a;
 	t_node			*cheap_n;
+	t_node			*current;
 	char			**split;
 	int				n_str;
 	int				pos;
 	int				pos_found;
 	int				half_b;
+	int				closestmax;
+	int				closestpos;
 }					t_push_swap;
 
 int					main(int argc, char **argv);
@@ -80,12 +83,17 @@ void				ft_calc_pos(t_stack *stack);
 void				ft_calc_targ_pos(t_push_swap *ps);
 void				calculate_costs(t_push_swap *ps);
 int					calculate_cos_a(int targ_pos, int total);
-int					ft_abs(int x);
 t_node				*find_cheapest_node(t_stack *stack);
 void				ft_calc_sizes(t_push_swap *ps);
 void				ft_move_up(t_push_swap *ps);
 t_node				*ft_get_lower(t_stack *stack);
 int					ft_is_sort(t_stack *stack);
 void				ft_sort_a(t_push_swap *ps);
+void				ft_get_pos(t_stack *stack_a, int num, int maxint,
+						t_push_swap *ps);
+void				find_closest_above(t_stack *stack_a, int num, int maxint,
+						t_push_swap *ps);
+void				find_min_value(t_stack *stack_a, int maxint,
+						t_push_swap *ps);
 
 #endif
