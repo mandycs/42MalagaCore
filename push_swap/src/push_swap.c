@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:36 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/13 22:16:36 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/14 17:22:17 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_prepare_stack(t_push_swap *ps, int argc, char **argv)
 	if (ps->stack_a->size > 3)
 		ft_prepare_stack_a(ps);
 	else
-		return (1);
+		return (0);
 	return (0);
 }
 
