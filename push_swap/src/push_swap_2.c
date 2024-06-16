@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:50:47 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/16 10:11:52 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 22:19:54 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	ft_prepare_stack_2(t_push_swap *ps, char **argv)
 			return (1);
 		i++;
 	}
-	i = 0;
-	while (i < ps->n_str)
+	i = ps->n_str - 1;
+	while (i >= 0)
 	{
 		ft_push(ps->stack_a, ft_atoi(ps->split[i]));
-		i++;
+		i--;
 	}
 	if (ft_check_doubles(ps) == 1)
 	{
@@ -37,6 +37,8 @@ int	ft_prepare_stack_2(t_push_swap *ps, char **argv)
 	}
 	if (ps->stack_a->size > 3)
 		ft_prepare_stack_a(ps);
+	else
+		ft_sort_three(ps->stack_a, ps);
 	return (0);
 }
 
@@ -68,6 +70,8 @@ t_stack	*ft_create_stack(void)
 	t_stack	*stack;
 
 	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
 	stack->head = NULL;
 	stack->size = 0;
 	return (stack);
@@ -103,4 +107,5 @@ void	ft_calc(t_push_swap *ps)
 		ft_calc_pos(ps->stack_b);
 		ft_calc_sizes(ps);
 	}
+	ft_sort_a(ps);
 }

@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:53:21 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/15 21:49:08 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 22:06:20 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,15 @@ void	ft_reverse_rotate_rr(t_push_swap *ps)
 
 void	ft_prepare_stack_a(t_push_swap *ps)
 {
-	while (ps->stack_a->size > 3)
-	{
-		ft_push_b(ps);
-		ft_calc_sizes(ps);
+	if (ft_is_sort(ps->stack_a) == 0)
+	{	
+		while (ps->stack_a->size > 3)
+		{
+			ft_push_b(ps);
+			ft_calc_sizes(ps);
+		}
+		ft_sort_three(ps->stack_a, ps);
+		ft_calc(ps);
 	}
 }
 

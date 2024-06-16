@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:49 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/16 10:21:06 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 20:55:53 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ void				free_stacks(t_push_swap *ps);
 void				free_split(char **split);
 void				free_push_swap(t_push_swap *ps);
 void				ft_calcs(t_push_swap *ps);
+t_push_swap			*init_structs(void);
+void				ft_checkargs(int argc, char **argv);
 
 #endif
