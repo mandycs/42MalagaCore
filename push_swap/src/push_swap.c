@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:36 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/14 17:22:17 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 09:46:30 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,18 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (ft_prepare_stack_2(ps, argv) == 1)
+		{
+			free_push_swap(ps);
 			return (1);
+		}
 	}
 	else
 	{
 		if (ft_prepare_stack(ps, argc, argv) == 1)
+		{
+			free_push_swap(ps);
 			return (1);
+		}
 	}
 	ft_sort_three(ps->stack_a, ps);
 	ft_calc(ps);

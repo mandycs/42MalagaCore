@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 23:50:47 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/13 22:17:05 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 10:00:53 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ int	ft_check_doubles(t_push_swap *ps)
 {
 	t_node	*current;
 	t_node	*tmp;
+	int		i;
 
-	current = ps->stack_b->head;
-	while (current != NULL)
+	i = 0;
+	current = ps->stack_a->head;
+	while (i < ps->stack_a->size)
 	{
 		tmp = current->next;
 		while (tmp != NULL)
@@ -53,6 +55,7 @@ int	ft_check_doubles(t_push_swap *ps)
 			tmp = tmp->next;
 		}
 		current = current->next;
+		i++;
 	}
 	return (0);
 }

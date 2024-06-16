@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:49 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/13 22:15:09 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 09:47:28 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_node
 {
@@ -95,5 +96,9 @@ void				find_closest_above(t_stack *stack_a, int num, int maxint,
 						t_push_swap *ps);
 void				find_min_value(t_stack *stack_a, int maxint,
 						t_push_swap *ps);
+void				ft_free_stack(t_stack *stack);
+void				free_stacks(t_push_swap *ps);
+void				free_split(char **split);
+void				free_push_swap(t_push_swap *ps);
 
 #endif

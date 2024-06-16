@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 13:41:59 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/15 21:48:50 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 09:13:16 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_swap_a(t_push_swap *ps)
 	ps->stack_a->head = second;
 	first->next = second->next;
 	second->next = first;
-	printf("sa\n");
+	write(1,"sa\n",3);
 }
 
 void	ft_swap_b(t_push_swap *ps)
