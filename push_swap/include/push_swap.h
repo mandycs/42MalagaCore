@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:49 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/16 09:47:28 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 10:21:06 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_push_swap
 }					t_push_swap;
 
 int					main(int argc, char **argv);
-t_stack				*ft_init_stack(void);
 int					ft_prepare_stack(t_push_swap *ps, int argc, char **argv);
 int					ft_atoi(char *str);
 int					ft_isdigit(char *str);
@@ -100,5 +99,6 @@ void				ft_free_stack(t_stack *stack);
 void				free_stacks(t_push_swap *ps);
 void				free_split(char **split);
 void				free_push_swap(t_push_swap *ps);
+void				ft_calcs(t_push_swap *ps);
 
 #endif

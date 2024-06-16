@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:40:19 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/13 22:15:33 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 10:18:39 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,12 @@ void	find_min_value(t_stack *stack_a, int maxint, t_push_swap *ps)
 		ps->current = ps->current->next;
 		ps->pos++;
 	}
+}
+void	ft_calcs(t_push_swap *ps)
+{
+	ft_sort_three(ps->stack_a, ps);
+	ft_calc(ps);
+	ft_sort_a(ps);
+	print_stack_a(ps->stack_a);
+	free_push_swap(ps);
 }

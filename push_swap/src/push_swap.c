@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 00:04:36 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/16 09:46:30 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/16 10:19:27 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,8 @@ int	main(int argc, char **argv)
 			return (1);
 		}
 	}
-	ft_sort_three(ps->stack_a, ps);
-	ft_calc(ps);
-	ft_sort_a(ps);
-	print_stack_a(ps->stack_a);
+	ft_calcs(ps);
 	return (0);
-}
-
-t_stack	*ft_init_stack(void)
-{
-	t_stack	*stack;
-
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack)
-		return (NULL);
-	stack->head = NULL;
-	stack->size = 0;
-	return (stack);
 }
 
 int	ft_prepare_stack(t_push_swap *ps, int argc, char **argv)
