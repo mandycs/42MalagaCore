@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:55:29 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 18:26:49 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/19 20:29:46 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ t_gen	ft_fatality(t_gen gen)
 	gen.lower = ft_get_lower(gen.stack_a);
 	if (gen.lower->act_pos > gen.sizea / 2)
 	{
-		while (gen.stack_a->content != gen.lower->content)
+		while (!ft_is_sorted(gen.stack_a))
 			gen.stack_a = ft_rra(gen.stack_a, 1);
 	}
 	else
 	{
-		while (gen.stack_a->content != gen.lower->content)
+		while (!ft_is_sorted(gen.stack_a))
 			gen.stack_a = ft_ra(gen.stack_a, 1);
 	}
 	return (gen);

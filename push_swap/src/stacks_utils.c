@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:15:08 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 18:24:20 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/19 20:29:12 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_stack	*ft_init_a2(char **nbs, t_stack *stack_a)
 	i++;
 	if (size == 1)
 		return (ft_clean(first, nbs	));
-	while( nbs[i])
+	while(i < size - 1)
 	{
 		stack_a->content = ft_atoi(nbs[i]);
 		stack_a->next = malloc(sizeof(t_stack));
