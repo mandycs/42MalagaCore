@@ -5,95 +5,100 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 13:50:05 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/15 21:49:36 by mancorte         ###   ########.fr       */
+/*   Created: 2024/06/19 17:55:29 by mancorte          #+#    #+#             */
+/*   Updated: 2024/06/19 18:26:49 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
-void	ft_rotate_a(t_push_swap *ps)
+t_gen	ft_rr(t_gen gen)
 {
-	t_node	*first;
-	t_node	*last;
-
-	if (ps->stack_a->size < 2)
-		return ;
-	first = ps->stack_a->head;
-	last = ps->stack_a->head;
-	while (last->next)
-		last = last->next;
-	ps->stack_a->head = first->next;
-	last->next = first;
-	first->next = NULL;
-	write(1, "ra\n", 3);
-}
-
-void	ft_rotate_b(t_push_swap *ps)
-{
-	t_node	*first;
-	t_node	*last;
-
-	if (ps->stack_b->size < 2)
-		return ;
-	first = ps->stack_b->head;
-	last = ps->stack_b->head;
-	while (last->next)
-		last = last->next;
-	ps->stack_b->head = first->next;
-	last->next = first;
-	first->next = NULL;
-	write(1, "rb\n", 3);
-}
-
-void	ft_rotate_rr(t_push_swap *ps)
-{
-	ft_rotate_a(ps);
-	ft_rotate_b(ps);
-	ft_calc_sizes(ps);
+	gen.stack_a = ft_ra(gen.stack_a, 0);
+	gen.stack_b = ft_rb(gen.stack_b, 0);
 	write(1, "rr\n", 3);
+	ft_set_pos(&gen.stack_a);
+	ft_set_pos(&gen.stack_b);
+	return (gen);
 }
 
-void	ft_reverse_rotate_a(t_push_swap *ps)
+t_stack	*ft_rra(t_stack *stack_a, int flag)
 {
-	t_node	*first;
-	t_node	*last;
-	t_node	*before_last;
+	t_stack	*last;
+	t_stack	*first;
 
-	if (ps->stack_a->size < 2)
-		return ;
-	first = ps->stack_a->head;
-	last = ps->stack_a->head;
-	before_last = ps->stack_a->head;
-	while (last->next)
-	{
-		before_last = last;
-		last = last->next;
-	}
-	ps->stack_a->head = last;
-	before_last->next = NULL;
+	if (!stack_a || !stack_a->next)
+		return (stack_a);
+	first = stack_a;
+	while (stack_a->next->next)
+		stack_a = stack_a->next;
+	last = stack_a->next;
+	stack_a->next = NULL;
 	last->next = first;
-	write(1, "rra\n", 4);
+	if (flag)
+		write(1, "rra\n", 4);
+	ft_set_pos(&last);
+	return (last);
 }
 
-void	ft_reverse_rotate_b(t_push_swap *ps)
+t_stack	*ft_ra(t_stack *stack_a, int flag)
 {
-	t_node	*first;
-	t_node	*last;
-	t_node	*before_last;
+	int		tmp;
+	t_stack	*first;
 
-	if (ps->stack_b->size < 2)
-		return ;
-	first = ps->stack_b->head;
-	last = ps->stack_b->head;
-	before_last = ps->stack_b->head;
-	while (last->next)
+	if (!stack_a || !stack_a->next)
+		return (stack_a);
+	first = stack_a;
+	stack_a = stack_a->next;
+	while (stack_a->next)
 	{
-		before_last = last;
-		last = last->next;
+		tmp = stack_a->content;
+		stack_a->content = stack_a->next->content;
+		stack_a->next->content = tmp;
+		stack_a = stack_a->next;
 	}
-	ps->stack_b->head = last;
-	before_last->next = NULL;
+	tmp = first->content;
+	first->content = stack_a->content;
+	stack_a->content = tmp;
+	if (flag)
+		write(1, "ra\n", 3);
+	ft_set_pos(&first);
+	return (first);
+}
+
+t_stack	*ft_rrb(t_stack *stack_b, int flag)
+{
+	t_stack	*last;
+	t_stack	*first;
+
+	if (!stack_b || !stack_b->next)
+		return (stack_b);
+	first = stack_b;
+	while (stack_b->next->next)
+		stack_b = stack_b->next;
+	last = stack_b->next;
+	stack_b->next = NULL;
 	last->next = first;
-	write(1, "rrb\n", 4);
+	if (flag)
+		write(1, "rrb\n", 4);
+	ft_set_pos(&last);
+	return (last);
+}
+
+t_gen	ft_fatality(t_gen gen)
+{
+	ft_set_pos(&gen.stack_a);
+	gen.sizea = ft_get_size(gen.stack_a);
+	gen.lower = ft_get_lower(gen.stack_a);
+	if (gen.lower->act_pos > gen.sizea / 2)
+	{
+		while (gen.stack_a->content != gen.lower->content)
+			gen.stack_a = ft_rra(gen.stack_a, 1);
+	}
+	else
+	{
+		while (gen.stack_a->content != gen.lower->content)
+			gen.stack_a = ft_ra(gen.stack_a, 1);
+	}
+	return (gen);
 }

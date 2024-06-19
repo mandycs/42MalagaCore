@@ -5,84 +5,112 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 12:32:26 by mancorte          #+#    #+#             */
-/*   Updated: 2024/04/13 22:15:54 by mancorte         ###   ########.fr       */
+/*   Created: 2024/06/19 16:58:01 by mancorte          #+#    #+#             */
+/*   Updated: 2024/06/19 18:19:42 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
-void	ft_calc_targ_pos(t_push_swap *ps)
+t_stack	*ft_cheap(t_stack *stack_b)
 {
-	t_node	*node_b;
-	int		maxint;
+	t_stack	*tmp;
+	t_stack	*cheap;
 
-	node_b = ps->stack_b->head;
-	maxint = 2147483647;
-	while (node_b)
+	tmp = stack_b;
+	cheap = tmp;
+	while (tmp)
 	{
-		ft_get_pos(ps->stack_a, node_b->value, maxint, ps);
-		node_b->targ_pos = ps->closestpos;
-		node_b = node_b->next;
+		if (ft_pos(tmp->cos_a) + ft_pos(tmp->cos_b) < ft_pos(cheap->cos_a)
+			+ ft_pos(cheap->cos_b))
+			cheap = tmp;
+		tmp = tmp->next;
 	}
+	return (cheap);
 }
 
-void	calculate_costs(t_push_swap *ps)
+t_gen	ft_calc_cost(t_gen gen)
 {
-	t_node	*node;
+	t_stack	*tmp;
 
-	node = ps->stack_b->head;
-	while (node != NULL)
+	tmp = gen.stack_b;
+	while (tmp)
 	{
-		node->cos_b = node->act_pos;
-		if (node->act_pos > ps->stack_b->size / 2)
-			node->cos_b = (ps->stack_b->size - node->act_pos) * -1;
-		node->cos_a = node->targ_pos;
-		if (node->targ_pos > ps->stack_a->size / 2)
-			node->cos_a = (ps->stack_a->size - node->targ_pos) * -1;
-		node = node->next;
+		tmp->cos_b = tmp->act_pos;
+		if (tmp->act_pos > ft_get_size(gen.stack_b) / 2)
+			tmp->cos_b = ft_get_size(gen.stack_b) - tmp->act_pos * -1;
+		tmp->cos_a = tmp->tar_pos;
+		if (tmp->tar_pos > ft_get_size(gen.stack_a) / 2)
+			tmp->cos_a = ft_get_size(gen.stack_a) - tmp->tar_pos * -1;
+		tmp = tmp->next;
 	}
+	return (gen);
 }
 
-int	calculate_cos_a(int targ_pos, int total)
+int	ft_get_pos(t_stack *stack_a, int content, int targ, int max)
 {
-	int	forward;
-	int	backward;
+	t_stack	*tmp;
 
-	forward = targ_pos;
-	backward = total - targ_pos;
-	if (forward < backward)
-		return (forward);
-	else
-		return (backward);
-}
-
-t_node	*find_cheapest_node(t_stack *stack)
-{
-	t_node	*cheapest_node;
-	int		min_cost;
-	t_node	*current_node;
-
-	if (stack == NULL || stack->head == NULL)
-		return (NULL);
-	cheapest_node = stack->head;
-	min_cost = cheapest_node->tot_cos;
-	current_node = cheapest_node->next;
-	while (current_node != NULL)
+	tmp = stack_a;
+	while (tmp)
 	{
-		if (current_node->tot_cos < min_cost)
+		if (content < tmp->content && tmp->content < max)
 		{
-			min_cost = current_node->tot_cos;
-			cheapest_node = current_node;
+			max = tmp->content;
+			targ = tmp->act_pos;
 		}
-		current_node = current_node->next;
+		tmp = tmp->next;
 	}
-	return (cheapest_node);
+	if (max != 2147483647)
+		return (targ);
+	tmp = stack_a;
+	while (tmp)
+	{
+		if (tmp->content < max)
+		{
+			max = tmp->content;
+			targ = tmp->act_pos;
+		}
+		tmp = tmp->next;
+	}
+	return (targ);
 }
 
-void	ft_get_pos(t_stack *stack_a, int num, int maxint, t_push_swap *ps)
+t_gen	ft_set_targ(t_gen gen)
 {
-	find_closest_above(stack_a, num, maxint, ps);
-	if (ps->closestpos == -1)
-		find_min_value(stack_a, maxint, ps);
+	t_stack	*tmp;
+	int		targ;
+
+	targ = 0;
+	tmp = gen.stack_b;
+	while (tmp)
+	{
+		if (tmp->content == 2147483647)
+			targ = gen.sizea;
+		else
+			targ = ft_get_pos(gen.stack_a, tmp->content, targ, 2147483647);
+		tmp->tar_pos = targ;
+		tmp = tmp->next;
+	}
+	return (gen);
+}
+
+t_gen	ft_sort(t_gen gen)
+{
+	ft_set_pos(&gen.stack_a);
+	gen.sizea = ft_get_size(gen.stack_a);
+	while (ft_get_size(gen.stack_a) > 3)
+		gen = ft_pb(gen);
+	if (ft_get_size(gen.stack_a) == 2)
+		return (ft_sort_2(gen));
+	else
+		gen.stack_a = ft_sort_three(gen.stack_a);
+	while (gen.stack_b)
+	{
+		gen = ft_set_targ(gen);
+		gen = ft_calc_cost(gen);
+		gen = ft_move_up(gen, ft_cheap(gen.stack_b));
+	}
+	gen = ft_fatality(gen);
+	return (gen);
 }

@@ -5,75 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 13:41:59 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/16 09:13:16 by mancorte         ###   ########.fr       */
+/*   Created: 2024/06/19 17:04:30 by mancorte          #+#    #+#             */
+/*   Updated: 2024/06/19 17:55:56 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
-void	ft_swap_a(t_push_swap *ps)
+t_gen	ft_sort_2(t_gen gen)
 {
-	t_node	*first;
-	t_node	*second;
-
-	if (ps->stack_a->size < 2)
-		return ;
-	first = ps->stack_a->head;
-	second = first->next;
-	ps->stack_a->head = second;
-	first->next = second->next;
-	second->next = first;
-	write(1,"sa\n",3);
+	if (gen.stack_a->content > gen.stack_a->next->content)
+		gen.stack_a = ft_sa(gen.stack_a, 1);
+	return (gen);
 }
 
-void	ft_swap_b(t_push_swap *ps)
+t_gen	ft_pb(t_gen gen)
 {
-	t_node	*first;
-	t_node	*second;
+	t_stack	*tmp;
 
-	if (ps->stack_b->size < 2)
-		return ;
-	first = ps->stack_b->head;
-	second = first->next;
-	ps->stack_b->head = second;
-	first->next = second->next;
-	second->next = first;
-	write(1, "sb\n", 3);
-}
-
-void	ft_swap_ss(t_push_swap *ps)
-{
-	ft_swap_a(ps);
-	ft_swap_b(ps);
-	ft_calc_sizes(ps);
-	write(1, "ss\n", 3);
-}
-
-void	ft_push_a(t_push_swap *ps)
-{
-	t_node	*first;
-
-	if (ps->stack_b->size == 0)
-		return ;
-	first = ps->stack_b->head;
-	ps->stack_b->head = first->next;
-	first->next = ps->stack_a->head;
-	ps->stack_a->head = first;
-	ft_calc_sizes(ps);
-	write(1, "pa\n", 3);
-}
-
-void	ft_push_b(t_push_swap *ps)
-{
-	t_node	*first;
-
-	if (ps->stack_a->size == 0)
-		return ;
-	first = ps->stack_a->head;
-	ps->stack_a->head = first->next;
-	first->next = ps->stack_b->head;
-	ps->stack_b->head = first;
-	ft_calc_sizes(ps);
+	if (gen.stack_a)
+	{
+		if (!gen.stack_b)
+		{
+			gen.stack_b = gen.stack_a;
+			gen.stack_a = gen.stack_a->next;
+			gen.stack_b->next = NULL;
+		}
+		else
+		{
+			tmp = gen.stack_b;
+			gen.stack_b = gen.stack_a;
+			gen.stack_a = gen.stack_a->next;
+			gen.stack_b->next = tmp;
+		}
+	}
 	write(1, "pb\n", 3);
+	ft_set_pos(&gen.stack_a);
+	ft_set_pos(&gen.stack_b);
+	return (gen);
+}
+
+t_stack	*ft_sa(t_stack *stack_a, int flag)
+{
+	int	tmp;
+	
+	if (!stack_a || !stack_a->next)
+		return (stack_a);
+	tmp = stack_a->content;
+	stack_a->content = stack_a->next->content;
+	stack_a->next->content = tmp;
+	if (flag)
+		write(1, "sa\n", 3);
+	ft_set_pos(&stack_a);
+	return (stack_a);
+}
+
+t_gen	ft_pa(t_gen gen)
+{
+	t_stack	*tmp;
+
+	if (gen.stack_b)
+	{
+		if (!gen.stack_a)
+		{
+			gen.stack_a = gen.stack_b;
+			gen.stack_b = gen.stack_b->next;
+			gen.stack_a->next = NULL;
+		}
+		else
+		{
+			tmp = gen.stack_a;
+			gen.stack_a = gen.stack_b;
+			gen.stack_b = gen.stack_b->next;
+			gen.stack_a->next = tmp;
+		}
+	}
+	write(1,"pa\n", 3);
+	ft_set_pos(&gen.stack_a);
+	ft_set_pos(&gen.stack_b);
+	return (gen);
+}
+
+t_gen	ft_rrr(t_gen gen)
+{
+	gen.stack_a = ft_rra(gen.stack_a, 0);
+	gen.stack_b = ft_rrb(gen.stack_b, 0);
+	write(1,"rrr\n", 4);
+	ft_set_pos(&gen.stack_a);
+	ft_set_pos(&gen.stack_b);
+	return (gen);
 }
