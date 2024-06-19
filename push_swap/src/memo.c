@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:35:44 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 16:40:19 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/19 20:40:09 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack	*ft_clean_stack(t_stack *stack)
 {
 	t_stack	*tmp;
 
-	while (stack && stack->next)
+	while (stack)
 	{
 		tmp = stack;
 		stack = stack->next;
