@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:44:32 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 16:56:50 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/19 21:09:16 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ int	ft_error(t_stack *stack)
 {
 	if (ft_parse(stack) == 0)
 	{
-		write(1, "[ERROR] Input\n", 14);
+		write(1, "Error\n",6);
 		stack = ft_clean_stack(stack);
 		return (0);
 	}
 	if (ft_max_int(stack) == 0)
 	{
-		write(1, "[ERROR] Input\n", 14);
+		write(1, "Error\n", 6);
 		stack = ft_clean_stack(stack);
 		return (0);
 	}

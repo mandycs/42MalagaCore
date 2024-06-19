@@ -43,7 +43,7 @@ OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC)) \
  		$(patsubst $(UTILS_DIR)%.c, $(OBJ_DIR)%.o, $(UTILS))
 
 CC = clang
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -gdwarf-4
 CPPFLAGS := -I $(INCLUDE_DIR)
 LDFLAGS := 
 LDLIBS := 

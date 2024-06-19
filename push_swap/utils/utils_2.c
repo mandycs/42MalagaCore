@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:21:03 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 16:33:52 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/19 21:00:15 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,18 @@ char	**ft_split(char const *s, char c)
 	return (arrr);
 }
 
-int	ft_atoi(const char *c)
+long	ft_atoi(const char *c)
 {
-	int	num;
-	int	cnt;
-	int	sign;
+	long	num;
+	long	cnt;
+	long	sign;
 
 	sign = 1;
 	num = 0;
 	cnt = 0;
-	while ((c[cnt] >= 9 && c[cnt] <= 13) || c[cnt] == 32)
+	if (!c)
+		return (0);
+	while (((c[cnt] >= 9 && c[cnt] <= 13) || c[cnt] == 32) && c[cnt] != '\0')
 		cnt++;
 	if (c[cnt] == '-' || c[cnt] == '+')
 	{

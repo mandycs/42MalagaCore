@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:50:44 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 20:37:02 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/19 20:51:37 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_check_arg(char **argv)
 					|| argv[i][j + 1] == '\0' || argv[i][j + 1] == '-'
 					|| argv[i][j + 1] == '+')
 				{
-					write(1, "[ERROR] Input\n", 14);
+					write(1, "Error\n", 6);
 					return (0);
 				}
 			}
@@ -57,7 +57,7 @@ int	ft_check_chars(char **argv)
 				{
 					if (argv[i][j] != ' ')
 					{
-						write(1, "[ERROR] Input\n", 14);
+						write(1, "Error\n", 6);
 						return (0);
 					}
 				}

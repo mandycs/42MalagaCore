@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:50:44 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 18:25:35 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/06/19 20:50:03 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ struct					s_gen
 
 int						ft_isdigit(int c);
 char					**ft_split(const char *s, char c);
-int						ft_atoi(const char *c);
+long						ft_atoi(const char *c);
 int						ft_check_arg(char **argv);
 int						ft_check_chars(char **argv);
 t_stack					*ft_init_a(int size, char **nbs, t_stack *stack_a);
