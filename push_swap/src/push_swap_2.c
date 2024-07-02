@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:44:32 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 21:09:16 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:11:57 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int	ft_parse(t_stack *stack)
 {
 	t_stack	*tmp;
-	t_stack *tmp2;
+	t_stack	*tmp2;
 	int		i;
-	
+
 	tmp = stack;
 	i = 0;
-	while(tmp)
+	while (tmp)
 	{
 		tmp2 = stack;
 		if (tmp->content == 0 || tmp->content == -0 || tmp->content == +0)
@@ -56,7 +56,7 @@ int	ft_error(t_stack *stack)
 {
 	if (ft_parse(stack) == 0)
 	{
-		write(1, "Error\n",6);
+		write(1, "Error\n", 6);
 		stack = ft_clean_stack(stack);
 		return (0);
 	}

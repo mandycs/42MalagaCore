@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:04:30 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 17:55:56 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:10:58 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_gen	ft_pb(t_gen gen)
 t_stack	*ft_sa(t_stack *stack_a, int flag)
 {
 	int	tmp;
-	
+
 	if (!stack_a || !stack_a->next)
 		return (stack_a);
 	tmp = stack_a->content;
@@ -80,7 +80,7 @@ t_gen	ft_pa(t_gen gen)
 			gen.stack_a->next = tmp;
 		}
 	}
-	write(1,"pa\n", 3);
+	write(1, "pa\n", 3);
 	ft_set_pos(&gen.stack_a);
 	ft_set_pos(&gen.stack_b);
 	return (gen);
@@ -90,7 +90,7 @@ t_gen	ft_rrr(t_gen gen)
 {
 	gen.stack_a = ft_rra(gen.stack_a, 0);
 	gen.stack_b = ft_rrb(gen.stack_b, 0);
-	write(1,"rrr\n", 4);
+	write(1, "rrr\n", 4);
 	ft_set_pos(&gen.stack_a);
 	ft_set_pos(&gen.stack_b);
 	return (gen);

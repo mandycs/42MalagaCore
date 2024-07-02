@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 16:15:08 by mancorte          #+#    #+#             */
-/*   Updated: 2024/06/19 21:10:20 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:13:17 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_stack	*ft_init_a(int size, char **nbs, t_stack *stack_a)
 {
-	int	i;
-	t_stack *first;
+	int		i;
+	t_stack	*first;
 
 	i = 1;
 	if (size == 2)
@@ -26,7 +26,7 @@ t_stack	*ft_init_a(int size, char **nbs, t_stack *stack_a)
 	first->next = malloc(sizeof(t_stack));
 	stack_a = first->next;
 	i++;
-	while( i < size - 1)
+	while (i < size - 1)
 	{
 		stack_a->content = ft_atoi(nbs[i]);
 		stack_a->next = malloc(sizeof(t_stack));
@@ -40,9 +40,9 @@ t_stack	*ft_init_a(int size, char **nbs, t_stack *stack_a)
 
 t_stack	*ft_init_a2(char **nbs, t_stack *stack_a)
 {
-	int	i;
-	int	size;
-	t_stack *first;
+	int		i;
+	int		size;
+	t_stack	*first;
 
 	i = 0;
 	size = ft_split_size(nbs);
@@ -52,8 +52,8 @@ t_stack	*ft_init_a2(char **nbs, t_stack *stack_a)
 	first->next = malloc(sizeof(t_stack));
 	stack_a = first->next;
 	if (size == 1)
-		return (ft_clean(first, nbs	));
-	while(i < size - 1)
+		return (ft_clean(first, nbs));
+	while (i < size - 1)
 	{
 		stack_a->content = ft_atoi(nbs[i]);
 		stack_a->next = malloc(sizeof(t_stack));
