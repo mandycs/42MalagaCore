@@ -6,12 +6,11 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:16:54 by mancorte          #+#    #+#             */
-/*   Updated: 2024/07/31 20:19:02 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/08/16 18:51:00 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-
 
 bool	is_philo_full(t_data *data, t_philo *philo)
 {

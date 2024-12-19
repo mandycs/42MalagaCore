@@ -6,14 +6,14 @@
 
 class DiamondTrap : public FragTrap, public ScavTrap {
 private:
-    std::string name; // Nombre específico de DiamondTrap
+    std::string name;
 
 public:
     DiamondTrap(const std::string& name);
     ~DiamondTrap();
 
     void whoAmI();
-    using ScavTrap::attack; // Usar el método attack de ScavTrap
+    using ScavTrap::attack
 };
 
 #endif

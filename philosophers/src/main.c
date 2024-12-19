@@ -6,52 +6,57 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 19:47:01 by mancorte          #+#    #+#             */
-/*   Updated: 2024/07/31 20:22:48 by mancorte         ###   ########.fr       */
+/*   Updated: 2024/08/16 19:54:14 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	join_threads(t_data *data)
+int join_threads(t_data *data)
 {
-	int	i;
-	int	nb_philos;
+    int i;
+    int nb_philos;
 
-	nb_philos = get_nb_philos(data);
-	i = -1;
-	if (pthread_join(data->check_all_alive, NULL))
-		return (1);
-	if (nb_meals_option(data) == true && pthread_join(data->check_all_full,
-			NULL))
-		return (1);
-	while (++i < nb_philos)
-	{
-		if (pthread_join(data->philo_ths[i], NULL))
-			return (1);
-	}
-	return (0);
+    nb_philos = get_nb_philos(data);
+    i = -1;
+    if (pthread_join(data->check_all_alive, NULL))
+        return (1);
+    if (nb_meals_option(data) == true && pthread_join(data->check_all_full, NULL))
+        return (1);
+    while (++i < nb_philos)
+    {
+        if (data->philo_ths[i] != 0)
+        {
+            if (pthread_join(data->philo_ths[i], NULL))
+                return (1);
+        }
+    }
+    return (0);
 }
 
-int	run_threads(t_data *data)
-{
-	int	i;
-	int	num_philos;
 
-	i = 0;
-	num_philos = get_nb_philos(data);
-	data->start_time = get_time();
-	while (++i <= num_philos)
-	{
-		if (pthread_create(data->philo_ths, NULL, &routine, &data->philos[i
-					- 1]) != 0)
-			return (print_error("Error creating threads", PTHREAD_ERROR));
-	}
-	if (pthread_create(&data->check_all_alive, NULL, &all_alive_routine, data))
-		return (1);
-	if (nb_meals_option(data) == true && pthread_create(&data->check_all_full,
-			NULL, &all_full_routine, data))
-		return (1);
-	return (0);
+int run_threads(t_data *data)
+{
+    int i;
+    int num_philos;
+
+    i = 0;
+    num_philos = get_nb_philos(data);
+    data->start_time = get_time();
+
+    while (i < num_philos)
+    {
+        if (pthread_create(&data->philo_ths[i], NULL, &routine, &data->philos[i]) != 0)
+        {
+            return (print_error("Error creating threads", PTHREAD_ERROR));
+        }
+        i++;
+    }
+    if (pthread_create(&data->check_all_alive, NULL, &all_alive_routine, data))
+        return (1);
+    if (nb_meals_option(data) == true && pthread_create(&data->check_all_full, NULL, &all_full_routine, data))
+        return (1);
+    return (0);
 }
 
 int	philosophers(int argc, char **argv)
