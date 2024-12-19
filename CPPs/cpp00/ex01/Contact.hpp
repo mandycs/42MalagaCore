@@ -2,6 +2,7 @@
 #define CONTACT_HPP
 
 #include <string>
+#include <cctype>
 
 class Contact {
 private:
@@ -10,6 +11,7 @@ private:
     std::string nickname;
     std::string phoneNumber;
     std::string darkestSecret;
+    bool isNotEmpty(const std::string &input) const;
 
 public:
 
