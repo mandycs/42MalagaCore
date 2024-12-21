@@ -13,7 +13,7 @@ public:
     ~DiamondTrap();
 
     void whoAmI();
-    using ScavTrap::attack
+    using ScavTrap::attack;
 };
 
 #endif
