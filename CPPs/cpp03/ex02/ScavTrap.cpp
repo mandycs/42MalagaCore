@@ -11,6 +11,13 @@ ScavTrap::~ScavTrap() {
     std::cout << "ScavTrap " << this->name << " has been destroyed!" << std::endl;
 }
 
+ScavTrap::ScavTrap() : ClapTrap("ScavTrapy") {
+    hitPoints = 100;
+    energyPoints = 50;
+    attackDamage = 20;
+    std::cout << "ScavTrap " << this->name << " has been created!" << std::endl;
+}
+
 void ScavTrap::attack(const std::string& target) {
     if (energyPoints > 0 && hitPoints > 0) {
         energyPoints--;

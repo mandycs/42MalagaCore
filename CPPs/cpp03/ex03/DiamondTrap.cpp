@@ -8,6 +8,13 @@ DiamondTrap::DiamondTrap(const std::string& name)
     std::cout << "DiamondTrap " << this->name << " has been created!" << std::endl;
 }
 
+DiamondTrap::DiamondTrap() : ClapTrap("Diamondy_clap_name"), FragTrap(), ScavTrap(), name("Diamondy") {
+    hitPoints = FragTrap::hitPoints;
+    energyPoints = ScavTrap::energyPoints;
+    attackDamage = FragTrap::attackDamage;
+    std::cout << "DiamondTrap " << this->name << " has been created!" << std::endl;
+}
+
 DiamondTrap::~DiamondTrap() {
     std::cout << "DiamondTrap " << this->name << " has been destroyed!" << std::endl;
 }

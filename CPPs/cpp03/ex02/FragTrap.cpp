@@ -13,6 +13,14 @@ FragTrap::~FragTrap()
     std::cout << "FragTrap " << this->name << " has been destroyed!" << std::endl;
 }
 
+FragTrap::FragTrap() : ClapTrap("Fraggy")
+{
+    hitPoints = 100;
+    energyPoints = 100;
+    attackDamage = 30;
+    std::cout << "FragTrap " << this->name << " has been created!" << std::endl;
+}
+
 void FragTrap::attack(const std::string &target)
 {
     if (energyPoints > 0 && hitPoints > 0)
