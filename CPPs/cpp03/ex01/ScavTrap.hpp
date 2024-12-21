@@ -13,4 +13,4 @@ public:
     void guardGate(); // New functionality
 };
 
-#endifFragTrap Fraggy requests a positive high five! ✋
+#endif
