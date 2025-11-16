@@ -1,0 +1,24 @@
+# Environment variables
+.env
+
+# Secrets
+secrets/
+
+# Data directories
+/home/mancorte/data/
+
+# Docker volumes
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*~
+*.swp
+*.swo
