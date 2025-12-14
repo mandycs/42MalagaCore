@@ -27,7 +27,8 @@ RUN apk update && \
     wget \
     tar \
     curl \
-    netcat-openbsd && \
+    netcat-openbsd \
+    mariadb-client && \
     rm -rf /var/cache/apk/*
 
 # Create PHP-FPM directories and set permissions
