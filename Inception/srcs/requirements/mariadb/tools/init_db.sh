@@ -1,9 +1,14 @@
 #!/bin/sh
 
+# Fix permissions on mounted volume (ignore errors on bind mounts)
+if [ -d "/var/lib/mysql" ]; then
+    chown -R mysql:mysql /var/lib/mysql 2>/dev/null || true
+fi
+
 # Initialize MariaDB data directory if it doesn't exist
 if [ ! -d "/var/lib/mysql/mysql" ]; then
     echo "Initializing MariaDB data directory..."
-    mysql_install_db --user=mysql --datadir=/var/lib/mysql > /dev/null
+    mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
     # Start MariaDB temporarily to execute setup commands
     mysqld --user=mysql --bootstrap << EOF

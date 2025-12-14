@@ -24,6 +24,7 @@ setup:
 	@echo "Creating data directories..."
 	@sudo mkdir -p $(WP_DIR)
 	@sudo mkdir -p $(DB_DIR)
+	@sudo chmod -R 777 $(DATA_DIR)
 	@echo "Data directories created."
 
 build:

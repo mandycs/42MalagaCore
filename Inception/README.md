@@ -1,162 +1,137 @@
+*This project has been created as part of the 42 curriculum by mancorte.*
+
 # Inception
 
-Proyecto de infraestructura con Docker del curriculum de 42.
+## Description
 
-## Descripción
+Inception is a System Administration project that introduces Docker containerization. The goal is to set up a small infrastructure composed of different services (NGINX, WordPress, MariaDB) running in separate Docker containers, orchestrated with Docker Compose.
 
-Este proyecto configura una pequeña infraestructura compuesta por diferentes servicios usando Docker Compose:
-- **NGINX** con TLSv1.2/TLSv1.3 (puerto 443)
-- **WordPress + PHP-FPM** (puerto 9000)
-- **MariaDB** (puerto 3306)
+The infrastructure includes:
+- **NGINX**: Web server with TLSv1.2/TLSv1.3 SSL encryption (port 443)
+- **WordPress + PHP-FPM**: Content management system
+- **MariaDB**: Database server for WordPress
 
-## Requisitos
+## Instructions
 
-- Docker
-- Docker Compose
-- Make
+### Prerequisites
 
-## Configuración Inicial
+- Docker and Docker Compose installed
+- Make utility
+- Root/sudo access (for creating data directories)
 
-### 1. Configurar /etc/hosts
+### Quick Start
 
-Añade el dominio al archivo /etc/hosts:
-
+1. **Configure the domain name:**
 ```bash
 echo "127.0.0.1 mancorte.42.fr" | sudo tee -a /etc/hosts
 ```
 
-### 2. Verificar variables de entorno
-
-Revisa y ajusta las variables en `srcs/.env` según tus necesidades. Las contraseñas actuales son de ejemplo y deberían cambiarse en producción.
-
-### 3. Verificar archivos de secretos
-
-Los archivos en `secrets/` contienen credenciales sensibles. Asegúrate de que están en el `.gitignore`.
-
-## Uso
-
-### Construir e iniciar el proyecto
-
+2. **Build and start the infrastructure:**
 ```bash
 make
 ```
 
-Este comando:
-1. Crea los directorios de datos en `/home/mancorte/data/`
-2. Construye las imágenes Docker
-3. Levanta los contenedores
-
-### Comandos disponibles
-
-```bash
-make build          # Construir las imágenes
-make up             # Levantar los contenedores
-make down           # Detener los contenedores
-make start          # Iniciar contenedores detenidos
-make stop           # Detener contenedores sin eliminarlos
-make status         # Ver estado de los contenedores
-make logs           # Ver logs en tiempo real
-make clean          # Detener y eliminar volúmenes
-make fclean         # Limpieza completa (imágenes + datos)
-make re             # Reconstruir todo desde cero
+3. **Access the website:**
+```
+https://mancorte.42.fr
 ```
 
-## Acceso a los Servicios
+### Available Commands
 
-### WordPress
-- URL: https://mancorte.42.fr
-- Admin: mancorte / admin123secure
-- Usuario regular: regular_user / user123secure
+| Command | Description |
+|---------|-------------|
+| `make` | Build and start all containers |
+| `make build` | Build Docker images |
+| `make up` | Start containers |
+| `make down` | Stop containers |
+| `make logs` | View container logs |
+| `make clean` | Stop and remove volumes |
+| `make fclean` | Full cleanup (images + data) |
+| `make re` | Rebuild from scratch |
 
-### Base de Datos
-- Host: mariadb
-- Database: wordpress
-- User: wpuser
-- Password: wppass123secure
-- Root password: rootpass123secure
+## Resources
 
-## Estructura del Proyecto
+### Documentation
 
-```
-Inception/
-├── Makefile
-├── secrets/                    # Credenciales (git-ignored)
-│   ├── credentials.txt
-│   ├── db_password.txt
-│   └── db_root_password.txt
-└── srcs/
-    ├── .env                    # Variables de entorno
-    ├── docker-compose.yml      # Orquestación de servicios
-    └── requirements/
-        ├── mariadb/
-        │   ├── Dockerfile
-        │   ├── conf/
-        │   └── tools/
-        ├── nginx/
-        │   ├── Dockerfile
-        │   ├── conf/
-        │   └── tools/
-        └── wordpress/
-            ├── Dockerfile
-            ├── conf/
-            └── tools/
-```
+- [Docker Documentation](https://docs.docker.com/)
+- [Docker Compose Documentation](https://docs.docker.com/compose/)
+- [NGINX Documentation](https://nginx.org/en/docs/)
+- [WordPress Developer Resources](https://developer.wordpress.org/)
+- [MariaDB Documentation](https://mariadb.com/kb/en/documentation/)
 
-## Características Técnicas
+### AI Usage
 
-### NGINX
-- Alpine Linux 3.19
-- SSL/TLS con certificado autofirmado
-- Solo TLSv1.2 y TLSv1.3
-- Proxy reverso a PHP-FPM
+AI tools were used in this project for:
+- Generating initial Dockerfile templates and configuration files
+- Writing documentation and README files
+- Debugging configuration issues
+- Understanding Docker best practices
 
-### WordPress
-- Alpine Linux 3.19
-- PHP 8.2 con PHP-FPM
-- WP-CLI para instalación automatizada
-- 2 usuarios (admin + regular)
+All AI-generated content was reviewed, tested, and understood before implementation.
 
-### MariaDB
-- Alpine Linux 3.19
-- Inicialización automática de base de datos
-- Persistencia de datos en volumen
+---
 
-## Volúmenes
+## Project Description
 
-Los datos se almacenan en:
-- `/home/mancorte/data/wordpress` - Archivos de WordPress
-- `/home/mancorte/data/mariadb` - Base de datos MariaDB
+### Docker Architecture
 
-## Troubleshooting
+This project uses Docker to create isolated containers for each service. Unlike virtual machines, Docker containers share the host OS kernel, making them lightweight and fast to start.
 
-### Los contenedores no inician
-```bash
-make logs
-```
+### Comparisons
 
-### Permiso denegado en directorios de datos
-```bash
-sudo chmod -R 755 /home/mancorte/data/
-```
+#### Virtual Machines vs Docker
 
-### Reiniciar desde cero
-```bash
-make fclean
-make
-```
+| Aspect | Virtual Machines | Docker |
+|--------|------------------|--------|
+| **Isolation** | Full OS isolation | Process-level isolation |
+| **Resource Usage** | Heavy (full OS per VM) | Lightweight (shared kernel) |
+| **Startup Time** | Minutes | Seconds |
+| **Portability** | Hardware-dependent | Highly portable |
+| **Use Case** | Full OS environments | Microservices, applications |
 
-### Ver contenedores en ejecución
-```bash
-docker ps
-```
+**Why Docker for this project:** Docker provides sufficient isolation for web services while being resource-efficient. Each service (NGINX, WordPress, MariaDB) runs in its own container with only the necessary dependencies.
 
-## Notas de Seguridad
+#### Secrets vs Environment Variables
 
-- Las contraseñas en `.env` y `secrets/` son de ejemplo
-- Cambiar todas las credenciales antes de usar en producción
-- Los archivos sensibles están en `.gitignore`
-- El certificado SSL es autofirmado (solo para desarrollo)
+| Aspect | Environment Variables | Docker Secrets |
+|--------|----------------------|----------------|
+| **Storage** | Plain text in .env | Encrypted at rest |
+| **Access** | Available to all processes | Only to authorized services |
+| **Visibility** | Can be exposed in logs | Never exposed in logs |
+| **Best For** | Non-sensitive config | Passwords, API keys |
 
-## Autor
+**Implementation:** This project uses `.env` files for configuration variables and a `secrets/` directory for sensitive credentials, both ignored by git.
 
-**mancorte** - 42 Málaga
+#### Docker Network vs Host Network
+
+| Aspect | Docker Network (Bridge) | Host Network |
+|--------|------------------------|--------------|
+| **Isolation** | Containers isolated | No network isolation |
+| **Port Mapping** | Required | Direct access |
+| **Security** | Better (controlled exposure) | Less secure |
+| **Communication** | Via container names | Via localhost |
+
+**Implementation:** This project uses a custom bridge network (`inception-network`) allowing containers to communicate by service name while only exposing port 443 to the host.
+
+#### Docker Volumes vs Bind Mounts
+
+| Aspect | Docker Volumes | Bind Mounts |
+|--------|---------------|-------------|
+| **Management** | Managed by Docker | Direct host path |
+| **Portability** | More portable | Host-dependent |
+| **Performance** | Optimized by Docker | Native filesystem |
+| **Backup** | Docker commands | Standard file tools |
+
+**Implementation:** This project uses bind mounts to `/home/mancorte/data/` for data persistence, allowing easy access and backup of WordPress files and database data.
+
+### Design Choices
+
+1. **Alpine Linux 3.19**: Chosen as base image for minimal footprint and security
+2. **PHP-FPM 8.2**: Modern PHP version with FastCGI Process Manager for WordPress
+3. **TLSv1.2/1.3 Only**: Secure protocols, older versions disabled
+4. **Self-signed SSL**: Appropriate for development/testing environment
+5. **WP-CLI**: Automated WordPress installation without manual setup
+
+## Author
+
+**mancorte** - 42 Malaga
