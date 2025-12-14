@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM alpine:3.22
 
 # Install PHP-FPM and required PHP extensions
 RUN apk update && \
@@ -29,7 +29,8 @@ RUN apk update && \
     curl \
     netcat-openbsd \
     mariadb-client && \
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* && \
+    ln -s /usr/bin/php82 /usr/bin/php
 
 # Create PHP-FPM directories and set permissions
 RUN mkdir -p /var/www/html && \
