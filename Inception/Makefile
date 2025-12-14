@@ -16,7 +16,7 @@ DATA_DIR = /home/mancorte/data
 WP_DIR = $(DATA_DIR)/wordpress
 DB_DIR = $(DATA_DIR)/mariadb
 
-COMPOSE = docker-compose -f srcs/docker-compose.yml
+COMPOSE = docker compose -f srcs/docker-compose.yml
 
 all: setup build up
 
