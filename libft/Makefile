@@ -1,33 +1,50 @@
-CC = gcc
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/22 23:40:24 by mancorte          #+#    #+#              #
+#    Updated: 2026/09/14 00:00:00 by mancorte         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
-SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c \
-ft_memset.c ft_bzero.c ft_memmove.c ft_toupper.c \
-ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memcmp.c ft_strnstr.c \
-ft_atoi.c ft_strlcpy.c ft_strlcat.c ft_calloc.c ft_strdup.c ft_substr.c \
-ft_strjoin.c ft_strtrim.c ft_itoa.c ft_memcpy.c ft_memchr.c \
-ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
-ft_putnbr_fd.c ft_split.c
-BSRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c \
-ft_lstdelone_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
-BOBJS = $(BSRC:.c=.o)
-OBJS = $(SRC:.c=.o)
+
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
+AR = ar
+ARFLAGS = rcs
+RM = rm -f
 
-all : $(NAME)
+SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+	ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
+	ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
+	ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
+	ft_atoi.c ft_calloc.c ft_strdup.c \
+	ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
+	ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c \
+	ft_putendl_fd.c ft_putnbr_fd.c \
+	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-$(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+OBJS = $(SRC:.c=.o)
 
-$(OBJS) : $(SRC) 
-	$(CC) $(CFLAGS) -c $(SRC)
-$(BOJS) : $(BSRC)
-	$(CC) $(CFLAGS) -c $(SRC)
+all: $(NAME)
 
-bonus : $(BOBJS)
-	ar rcs $(NAME) $(BOBJS)
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+
+%.o: %.c libft.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean:
-	rm -f $(OBJS) $(BOBJS)
+	$(RM) $(OBJS)
+
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
+
 re: fclean all
-.PHONY: clean fclean re all bonus
+
+.PHONY: all clean fclean re

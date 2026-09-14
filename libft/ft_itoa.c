@@ -12,7 +12,27 @@
 
 #include "libft.h"
 
-char	*ft_invert(char *s1)
+static int	ft_numlen(int n)
+{
+	int	i;
+
+	i = 0;
+	if (n < 0)
+		i++;
+	if (n <= 9 && n >= -9)
+	{
+		i++;
+		return (i);
+	}
+	while (n != 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
+
+static char	*ft_invert(char *s1)
 {
 	size_t	i;
 	size_t	j;
