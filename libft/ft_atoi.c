@@ -10,26 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_numlen(int n)
-{
-	int	i;
-
-	i = 0;
-	if (n < 0)
-		i++;
-	if (n <= 9 && n >= -9)
-	{
-		i++;
-		return (i);
-	}
-	while (n != 0)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
-}
-
 int	ft_atoi(const char *str)
 {
 	int		c;
