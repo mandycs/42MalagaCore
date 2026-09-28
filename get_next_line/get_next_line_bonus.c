@@ -6,7 +6,7 @@
 /*   By: mancorte <mancorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 20:24:03 by mancorte          #+#    #+#             */
-/*   Updated: 2023/11/07 22:48:14 by mancorte         ###   ########.fr       */
+/*   Updated: 2026/09/28 17:00:00 by mancorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,82 +14,98 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*stack[1024];
-	char		tmp[BUFFER_SIZE + 1];
+	static char	*saves[GNL_MAX_FD];
 	char		*line;
-	int			readbytes;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= GNL_MAX_FD || BUFFER_SIZE <= 0)
 		return (NULL);
-	readbytes = 1;
-	while (!ft_strchr(stack[fd], '\n') && readbytes > 0)
-	{
-		readbytes = read(fd, tmp, BUFFER_SIZE);
-		if (readbytes < 0)
-		{
-			free(stack[fd]);
-			stack[fd] = NULL;
-			return (NULL);
-		}
-		tmp[readbytes] = '\0';
-		stack[fd] = ft_join_and_free(stack[fd], tmp);
-	}
-	line = create_line(stack[fd]);
-	stack[fd] = update_stack(stack[fd]);
+	line = gnl_fill(fd, &saves[fd]);
 	return (line);
 }
 
-char	*create_line(char *stack)
+char	*gnl_fill(int fd, char **save)
+{
+	char	*buffer;
+	char	*joined;
+	long	bytes;
+
+	bytes = 1;
+	while (bytes > 0 && !gnl_has_nl(*save))
+	{
+		buffer = gnl_read_buffer(fd, &bytes);
+		if (!buffer)
+		{
+			free(*save);
+			*save = NULL;
+			return (NULL);
+		}
+		joined = gnl_join(*save, buffer);
+		free(buffer);
+		if (!joined)
+			return (NULL);
+		*save = joined;
+	}
+	return (gnl_split_line(*save, save));
+}
+
+char	*gnl_read_buffer(int fd, long *bytes)
+{
+	char	*buf;
+
+	buf = (char *)malloc((size_t)BUFFER_SIZE + 1);
+	if (!buf)
+		return (NULL);
+	*bytes = (long)read(fd, buf, (size_t)BUFFER_SIZE);
+	if (*bytes < 0)
+	{
+		free(buf);
+		return (NULL);
+	}
+	buf[*bytes] = '\0';
+	return (buf);
+}
+
+char	*gnl_split_line(char *buffer, char **save)
+{
+	char	*line;
+	int		n;
+
+	if (!buffer || *buffer == '\0')
+	{
+		free(buffer);
+		*save = NULL;
+		return (NULL);
+	}
+	n = gnl_line_len(buffer);
+	line = gnl_copy_n(buffer, n);
+	if (!line)
+	{
+		free(buffer);
+		*save = NULL;
+		return (NULL);
+	}
+	if (buffer[n] == '\0')
+		*save = NULL;
+	else
+		*save = gnl_strdup(buffer + n);
+	free(buffer);
+	return (line);
+}
+
+char	*gnl_copy_n(char *src, int n)
 {
 	char	*line;
 	int		i;
 
-	if (!stack || !*stack)
-		return (NULL);
-	i = 0;
-	while (stack[i] && stack[i] != '\n')
-		i++;
-	if (stack[i] == '\n')
-		i++;
-	line = malloc(sizeof(char) * (i + 1));
+	line = (char *)malloc((size_t)n + 1);
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (stack[i] && stack[i] != '\n')
+	while (i < n)
 	{
-		line[i] = stack[i];
+		line[i] = src[i];
 		i++;
 	}
-	if (stack[i] == '\n')
-		line[i++] = '\n';
-	line[i] = '\0';
+	line[n] = '\0';
 	return (line);
-}
-
-char	*update_stack(char *stack)
-{
-	char	*aux;
-	char	*p;
-	int		i;
-
-	p = ft_strchr(stack, '\n');
-	if (!p)
-	{
-		free(stack);
-		return (NULL);
-	}
-	p++;
-	aux = malloc(sizeof(char) * (ft_strlen(p) + 1));
-	if (!aux)
-		return (NULL);
-	i = 0;
-	while (*p != '\0')
-	{
-		aux[i] = *p;
-		i++;
-		p++;
-	}
-	aux[i] = '\0';
-	free(stack);
-	return (aux);
 }
