@@ -18,7 +18,12 @@ disfrutar en futuros proyectos (puede incluirse en la libft).
 
 **Visión general.** La librería se construye como `libftprintf.a` mediante un Makefile que
 compila primero `libft` (incluida en `libft/`) y después las fuentes de `src/` con
-`-Wall -Wextra -Werror`, usando `cc`.
+`-Wall -Wextra -Werror`, usando `cc` y `ar`.
+
+El comportamiento ha sido validado contra el `printf` de glibc en los casos del subject:
+misma salida y misma cabecera devuelta, incluyendo `(nil)` para `%p` con puntero nulo,
+`INT_MIN`/`INT_MAX`, `UINT_MAX`, y conversión inválida (se devuelve `-1` sin imprimir,
+como glibc).
 
 ## Instrucciones
 
@@ -29,7 +34,6 @@ make         # compila libft/ y las fuentes de src/ y genera libftprintf.a
 make clean   # borra los objetos
 make fclean  # borra también la librería
 make re      # fclean + all
-make bonus   # recompila añadiendo las fuentes _bonus (si las hay)
 ```
 
 Verificación de la norma:

@@ -27,20 +27,12 @@
  * @return int -> Return de len of what is print
  */
 int		ft_printf(char const *str, ...);
-/**
- * @brief 
- * 
- * @param args 
- * @param format 
- * @return int 
- */
 int		ft_cases(va_list args, const char format);
 int		ft_printstr(char *str);
-int		ft_printptr(unsigned long long pt);
+int		ft_printptr(unsigned long long ptr);
 char	*ft_uitoa(unsigned int n);
 int		ft_printunbr(unsigned int nb);
 int		ft_unumlen(unsigned int n);
-int		ft_printptr(unsigned long long ptr);
 int		ft_printnbr(int nb);
 int		ft_printhex(unsigned int pt, char format);
 int		ft_numlenhex(unsigned int nb);

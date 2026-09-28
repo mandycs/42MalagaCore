@@ -47,13 +47,13 @@ int	ft_printptr(unsigned long long ptr)
 	int	pl;
 
 	pl = 0;
-	pl += write(1, "0x", 2);
 	if (ptr == 0)
-		pl += write(1, "0", 1);
-	else
 	{
-		ft_putptr(ptr);
-		pl += ft_ptrlen(ptr);
+		pl += write(1, "(nil)", 5);
+		return (pl);
 	}
+	pl += write(1, "0x", 2);
+	ft_putptr(ptr);
+	pl += ft_ptrlen(ptr);
 	return (pl);
 }
