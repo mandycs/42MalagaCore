@@ -31,8 +31,8 @@ int	ft_cases(va_list args, const char format)
 		pl += ft_printnbr(va_arg(args, int));
 	else if (format == 'u')
 		pl += ft_printunbr(va_arg(args, unsigned int));
-	else if ((format == 'x') || (format == 'X'))
-		pl += ft_printhex(va_arg(args, unsigned long long), format);
+	else if (format == 'x' || format == 'X')
+		pl += ft_printhex(va_arg(args, unsigned int), format);
 	else if (format == '%')
 	{
 		ft_putchar_fd('%', 1);

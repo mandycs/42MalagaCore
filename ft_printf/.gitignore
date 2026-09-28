@@ -1,0 +1,6 @@
+obj/
+libft/obj/
+*.o
+libftprintf.a
+libft/libft.a
+.DS_Store

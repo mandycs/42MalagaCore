@@ -15,16 +15,9 @@
 
 int	ft_unumlen(unsigned int n)
 {
-	unsigned int	i;
+	int	i;
 
-	i = 0;
-	if (n < 0)
-		i++;
-	if (n <= 9)
-	{
-		i++;
-		return (i);
-	}
+	i = 1;
 	while (n != 0)
 	{
 		n = n / 10;
@@ -49,7 +42,7 @@ char	*ft_uitoa(unsigned int n)
 		str[i++] = nb % 10 + 48;
 		nb = nb / 10;
 	}
-	if (nb >= 0 && nb <= 9)
+	if (nb <= 9)
 		str[i++] = nb + 48;
 	str[i] = '\0';
 	str = ft_invert(str);
