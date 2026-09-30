@@ -3,38 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 21:30:33 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 22:07:01 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 21:30:33 by jucortes          #+#    #+#             */
+/*   Updated: 2023/05/08 22:07:01 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*lst_new;
-	t_list	*position_new;
-	t_list	*position_old;
+	t_list	*node;
+	void	*content;
 
-	if (!lst)
+	if (!lst || !f)
 		return (NULL);
-	lst_new = ft_lstnew((*f)(lst->content));
-	if (!lst_new)
-		return (NULL);
-	position_new = lst_new;
-	position_old = lst->next;
-	while (position_old)
+	lst_new = NULL;
+	while (lst)
 	{
-		position_new->next = ft_lstnew((*f)(position_old->content));
-		if (!position_new)
+		content = f(lst->content);
+		node = ft_lstnew(content);
+		if (!node)
 		{
+			if (del)
+				del(content);
 			ft_lstclear(&lst_new, del);
 			return (NULL);
 		}
-		position_new = position_new->next;
-		position_old = position_old->next;
+		ft_lstadd_back(&lst_new, node);
+		lst = lst->next;
 	}
 	return (lst_new);
 }

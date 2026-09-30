@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 23:28:00 by mancorte          #+#    #+#             */
-/*   Updated: 2023/04/22 23:28:00 by mancorte         ###   ########.fr       */
+/*   Created: 2023/04/22 23:28:00 by jucortes          #+#    #+#             */
+/*   Updated: 2023/04/22 23:28:00 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

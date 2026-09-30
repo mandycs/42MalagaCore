@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printhex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/28 17:55:24 by mancorte          #+#    #+#             */
-/*   Updated: 2023/06/18 00:21:00 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/28 17:55:24 by jucortes          #+#    #+#             */
+/*   Updated: 2023/06/18 00:21:00 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

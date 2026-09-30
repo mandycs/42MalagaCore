@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/22 22:51:57 by mancorte          #+#    #+#             */
-/*   Updated: 2023/04/22 23:52:54 by mancorte         ###   ########.fr       */
+/*   Created: 2023/04/22 22:51:57 by jucortes          #+#    #+#             */
+/*   Updated: 2023/04/22 23:52:54 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 22:24:29 by mancorte          #+#    #+#             */
-/*   Updated: 2023/04/22 23:16:54 by mancorte         ###   ########.fr       */
+/*   Created: 2023/04/20 22:24:29 by jucortes          #+#    #+#             */
+/*   Updated: 2023/04/22 23:16:54 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

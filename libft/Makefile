@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+         #
+#    By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/22 23:40:24 by mancorte          #+#    #+#              #
-#    Updated: 2026/09/14 00:00:00 by mancorte         ###   ########.fr        #
+#    Created: 2023/04/22 23:40:24 by jucortes          #+#    #+#              #
+#    Updated: 2026/09/14 00:00:00 by jucortes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

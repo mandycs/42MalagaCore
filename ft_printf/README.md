@@ -1,4 +1,4 @@
-*Este proyecto ha sido creado como parte del currículo de 42 por mancorte.*
+*Este proyecto ha sido creado como parte del currículo de 42 por jucortes.*
 
 ## Descripción
 
@@ -21,7 +21,7 @@ compila primero `libft` (incluida en `libft/`) y después las fuentes de `src/` 
 `-Wall -Wextra -Werror`, usando `cc` y `ar`.
 
 El comportamiento ha sido validado contra el `printf` de glibc en los casos del subject:
-misma salida y misma cabecera devuelta, incluyendo `(nil)` para `%p` con puntero nulo,
+misma salida y mismo valor de retorno, incluyendo `(nil)` para `%p` con puntero nulo,
 `INT_MIN`/`INT_MAX`, `UINT_MAX`, y conversión inválida (se devuelve `-1` sin imprimir,
 como glibc).
 
@@ -39,7 +39,7 @@ make re      # fclean + all
 Verificación de la norma:
 
 ```sh
-norminette -R 5 src/ include/
+norminette src include
 ```
 
 Uso. Por ejemplo, crear un `main_test.c`:
@@ -60,9 +60,8 @@ cc -Wall -Wextra -Werror -I./include main_test.c libftprintf.a -o main_test
 ./main_test
 ```
 
-> Nota: los archivos `src/ft_*bonus.c` no existen actualmente; `make bonus` se comporta
-> igual que `make all`. Se han dejado listos para añadir las conversiones bonus
-> ('-0.' flags y field width) en su caso.
+> Nota: no hay parte bonus. No existen ficheros `src/ft_*bonus.c` ni regla `make bonus`;
+> las flags `-0.# +` y el ancho de campo no están implementadas.
 
 ## Recursos
 
@@ -95,7 +94,7 @@ propia función (`ft_printstr`, `ft_printnbr`, `ft_printunbr`, `ft_printhex`,
 `ft_printptr`) que recibe **ya** el valor apropiado de su tipo (gracias a `va_arg` con el
 tipo correspondiente) y devuelve la cantidad de caracteres escritos. Esto es la clave de
 la extensibilidad: el dispatcher no conoce el resto de funciones, y cada conversión está
-aislada en su ficheiro. Si un día hay que modificar el manejo de `x`/`X` no se toca el
+aislada en su fichero. Si un día hay que modificar el manejo de `x`/`X` no se toca el
 parser, ni `s`, ni `p`, etc.
 
 **Estructura de datos.** No se usa ninguna estructura de datos compleja ni ningún buffer
@@ -107,7 +106,7 @@ oculto, no hay buffers estáticos, y así la función es reentrante y thread-saf
 fd concreto.
 
 **`%d`/`%i` y `%u`.** Estos dos casos son los que requieren `malloc`. `ft_unumlen`
-calcula la longitud en base 10 (o con signo, en `%d`) sin convertir el número, y
+calcula la longitud en base 10 sin convertir el número, y
 `ft_uitoa` lo convierte a string (invertida al final). Al conocer la longitud exacta, la
 `malloc` tiene el tamaño justo, sin desborde ni memoria desperdiciada, y el retorno de
 `ft_printf` (que es la suma de todos los `write`s y de las longitudes devueltas por cada

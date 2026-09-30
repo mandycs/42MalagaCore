@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 10:46:57 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 10:54:19 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 10:46:57 by jucortes          #+#    #+#             */
+/*   Updated: 2023/05/08 10:54:19 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

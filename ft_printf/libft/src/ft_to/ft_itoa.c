@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/07 23:39:16 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 01:50:05 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/07 23:39:16 by jucortes          #+#    #+#             */
+/*   Updated: 2023/05/08 01:50:05 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

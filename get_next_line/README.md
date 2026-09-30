@@ -1,9 +1,9 @@
-*Este proyecto ha sido creado como parte del currículo de 42 por mancorte.*
+*Este proyecto ha sido creado como parte del currículo de 42 por jucortes.*
 
 ## Descripción
 
 `get_next_line` is a utility function that reads a file descriptor one line at a time.
-Each call to `get_next_line(int const fd)` returns one line of text, stored in a
+Each call to `get_next_line(int fd)` returns one line of text, stored in a
 new `char` array allocated on the heap, ending in a newline character (except for the
 last line, which ends without one) and a null byte (`\0`). When the end of file is
 reached the function returns `NULL`.
@@ -43,7 +43,10 @@ To read a file you can simply run:
 ./main <fichero>
 ```
 
-or call the function from your own program:
+`BUFFER_SIZE` defaults to `1024` and can be changed at compile time, e.g.
+`cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 main.c get_next_line.c get_next_line_utils.c`.
+
+Or call the function from your own program:
 
 ```c
 #include <get_next_line.h>
@@ -65,7 +68,7 @@ while ((line = get_next_line(0)) != NULL)   // read from stdin
 
 ```sh
 valgrind --leak-check=full --error-exitcode=9 ./main <fichero>   # 0 bytes at exit
-norminette get_next_line.c get_next_line.h get_next_line_utils.c ...
+norminette get_next_line*.c get_next_line*.h
 ```
 
 ## Recursos
@@ -110,7 +113,7 @@ Why this design, and why it scales from `BUFFER_SIZE = 1` to `10000000`:
    released.
 
 4. **The bonus (multi-fd).** One `static` array
-   `char *saves[GNL_MAX_FD]`, where index `fd` holds the saved state of that file
+   `char *saves[GNL_MAX_FD]`, where index `fd` (up to `GNL_MAX_FD` = 512) holds the saved state of that file
    descriptor. Because the state lives in a single static variable (the array), the
    function honours the "one static variable" rule while being able to read from fd 3,
    then 4, then 5, interleaved, each remembering exactly where it left off and never

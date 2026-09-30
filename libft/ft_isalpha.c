@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 22:23:55 by mancorte          #+#    #+#             */
-/*   Updated: 2023/04/22 23:51:17 by mancorte         ###   ########.fr       */
+/*   Created: 2023/04/20 22:23:55 by jucortes          #+#    #+#             */
+/*   Updated: 2023/04/22 23:51:17 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

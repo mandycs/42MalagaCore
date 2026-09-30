@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/20 22:24:11 by mancorte          #+#    #+#             */
-/*   Updated: 2023/04/22 23:16:33 by mancorte         ###   ########.fr       */
+/*   Created: 2023/04/20 22:24:11 by jucortes          #+#    #+#             */
+/*   Updated: 2023/04/22 23:16:33 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

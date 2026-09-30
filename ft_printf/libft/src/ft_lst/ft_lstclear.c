@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mancorte <mancorte@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: jucortes <jucortes@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/08 20:51:25 by mancorte          #+#    #+#             */
-/*   Updated: 2023/05/08 21:08:17 by mancorte         ###   ########.fr       */
+/*   Created: 2023/05/08 20:51:25 by jucortes          #+#    #+#             */
+/*   Updated: 2023/05/08 21:08:17 by jucortes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*position;
 
-	if (!*lst)
+	if (!lst || !*lst)
 		return ;
 	while (*lst != NULL)
 	{
