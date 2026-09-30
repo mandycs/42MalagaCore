@@ -33,6 +33,17 @@ static int	ft_count_words(const char *s, char c)
 	return (count);
 }
 
+static char	**ft_free_all(char **strs, size_t k)
+{
+	while (k > 0)
+	{
+		k--;
+		free(strs[k]);
+	}
+	free(strs);
+	return (NULL);
+}
+
 static char	**ft_fill_array(char **strs, char const *s, char c)
 {
 	size_t	i;
@@ -40,35 +51,34 @@ static char	**ft_fill_array(char **strs, char const *s, char c)
 	size_t	k;
 
 	i = 0;
-	j = 0;
 	k = 0;
 	while (s[i] != '\0')
 	{
-		while (s[i] != '\0' && s[i] == c)
-			i++;
-		j = i;
-		while (s[i] != '\0' && s[i] != c)
-			i++;
-		if (j >= ft_strlen(s))
-			strs[k++] = NULL;
+		if (s[i] != c)
+		{
+			j = i;
+			while (s[i] != '\0' && s[i] != c)
+				i++;
+			strs[k] = ft_substr(s, j, i - j);
+			if (!strs[k])
+				return (ft_free_all(strs, k));
+			k++;
+		}
 		else
-			strs[k++] = ft_substr(s, j, i - j);
+			i++;
 	}
+	strs[k] = NULL;
 	return (strs);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**strs;
-	int		n_str;
 
 	if (!s)
 		return (NULL);
-	n_str = ft_count_words(s, c);
-	strs = (char **)malloc((sizeof(char *) * (n_str + 1)));
+	strs = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (!strs)
 		return (NULL);
-	ft_fill_array(strs, s, c);
-	strs[n_str] = NULL;
-	return (strs);
+	return (ft_fill_array(strs, s, c));
 }
