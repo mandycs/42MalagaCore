@@ -65,16 +65,15 @@ while ((line = get_next_line(0)) != NULL)   /* read from stdin */
 }
 ```
 
-> Note: `main.c` in this directory is a small *testing* driver, kept **commented
-> out** on purpose. The subject states that test programs are neither delivered
-> nor evaluated, and an active `main()` here would clash with the one used during
-> the evaluation. Uncomment the block inside it if you want to try it by hand.
+> Note: no test driver is kept in this directory. The subject states that test
+> programs are neither delivered nor evaluated, so `main.c` lives outside the
+> repository: write your own and compile it alongside the sources as shown above.
 
 ### Verifying it
 
 ```sh
 valgrind --leak-check=full --error-exitcode=9 ./gnl <fichero>   # 0 bytes at exit
-norminette get_next_line*.c get_next_line*.h main.c
+norminette get_next_line*.c get_next_line*.h
 ```
 
 ## Recursos
