@@ -42,7 +42,10 @@ char	*gnl_fill(int fd, char **save)
 		joined = gnl_join(*save, buffer);
 		free(buffer);
 		if (!joined)
+		{
+			*save = NULL;
 			return (NULL);
+		}
 		*save = joined;
 	}
 	return (gnl_split_line(*save, save));
