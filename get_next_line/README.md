@@ -30,20 +30,25 @@ All files live in `get_next_line/`. Compile with `gcc/cc` and the flags required
 42 (`-Wall -Wextra -Werror`). A `Makefile` is provided.
 
 ```sh
-make          # builds the mandatory part  ->  ./main
-make bonus    # builds the bonus part      ->  ./main
-make clean    # removes object files
-make fclean   # removes everything generated
-make re       # fclean + rebuild
+make                   # builds the mandatory part  ->  ./gnl
+make bonus             # builds the bonus part      ->  ./gnl_bonus
+make BUFFER_SIZE=42    # same, with a given read buffer size
+make clean             # removes object files
+make fclean            # removes everything generated
+make re                # fclean + rebuild
 ```
+
+The mandatory and the bonus build produce **different binaries**, so they never
+overwrite each other and both can be kept side by side.
 
 To read a file you can simply run:
 
 ```sh
-./main <fichero>
+./gnl <fichero>
 ```
 
-`BUFFER_SIZE` defaults to `1024` and can be changed at compile time, e.g.
+`BUFFER_SIZE` defaults to `1024` and can be changed at compile time, either through
+the `Makefile` (`make BUFFER_SIZE=42`) or directly:
 `cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 main.c get_next_line.c get_next_line_utils.c`.
 
 Or call the function from your own program:
@@ -67,8 +72,8 @@ while ((line = get_next_line(0)) != NULL)   // read from stdin
 ### Verifying it
 
 ```sh
-valgrind --leak-check=full --error-exitcode=9 ./main <fichero>   # 0 bytes at exit
-norminette get_next_line*.c get_next_line*.h
+valgrind --leak-check=full --error-exitcode=9 ./gnl <fichero>   # 0 bytes at exit
+norminette get_next_line*.c get_next_line*.h main.c
 ```
 
 ## Recursos

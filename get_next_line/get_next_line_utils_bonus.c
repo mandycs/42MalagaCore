@@ -42,7 +42,10 @@ char	*gnl_join(char *s1, char *s2)
 	res = (char *)malloc((size_t)gnl_strlen(s1)
 			+ (size_t)gnl_strlen(s2) + 1);
 	if (!res)
+	{
+		free(s1);
 		return (NULL);
+	}
 	i = -1;
 	while (s1[++i])
 		res[i] = s1[i];
