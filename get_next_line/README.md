@@ -26,48 +26,49 @@ reader can interleave fds 3, 4 and 5 without losing track of each of them.
 
 ## Instrucciones
 
-All files live in `get_next_line/`. Compile with `gcc/cc` and the flags required by
-42 (`-Wall -Wextra -Werror`). A `Makefile` is provided.
+This project delivers **no binary and no `Makefile`**: the subject's "Archivos a
+entregar" are only `get_next_line.c`, `get_next_line_utils.c` and
+`get_next_line.h` (plus `get_next_line_bonus.c`, `get_next_line_bonus.h` and
+`get_next_line_utils_bonus.c` for the bonus). `get_next_line` is meant to be
+compiled together with whatever program uses it.
+
+Compile it next to your own `main`, with the flags required by 42 and the
+`BUFFER_SIZE` of your choice:
 
 ```sh
-make                   # builds the mandatory part  ->  ./gnl
-make bonus             # builds the bonus part      ->  ./gnl_bonus
-make BUFFER_SIZE=42    # same, with a given read buffer size
-make clean             # removes object files
-make fclean            # removes everything generated
-make re                # fclean + rebuild
+# mandatory part
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 \
+   get_next_line.c get_next_line_utils.c tu_main.c -o gnl
+
+# bonus part (several file descriptors at once)
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 \
+   get_next_line_bonus.c get_next_line_utils_bonus.c tu_main.c -o gnl_bonus
 ```
 
-The mandatory and the bonus build produce **different binaries**, so they never
-overwrite each other and both can be kept side by side.
+`-D BUFFER_SIZE=n` is optional: if it is not given, the header falls back to
+`1024`, so the project also compiles with just
+`cc -Wall -Wextra -Werror get_next_line.c get_next_line_utils.c tu_main.c`.
 
-To read a file you can simply run:
+Note that the mandatory and the bonus part both define `get_next_line`, so they
+can never be linked into the same binary: pick one set of sources per build.
 
-```sh
-./gnl <fichero>
-```
-
-`BUFFER_SIZE` defaults to `1024` and can be changed at compile time, either through
-the `Makefile` (`make BUFFER_SIZE=42`) or directly:
-`cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 main.c get_next_line.c get_next_line_utils.c`.
-
-Or call the function from your own program:
+Then call the function from your program:
 
 ```c
-#include <get_next_line.h>
+#include "get_next_line.h"
 
 char *line;
-while ((line = get_next_line(0)) != NULL)   // read from stdin
+while ((line = get_next_line(0)) != NULL)   /* read from stdin */
 {
     printf("%s", line);
-    free(line);
+    free(line);                             /* the caller owns the line */
 }
 ```
 
-> Note: `main.c` is only a small *testing* driver (it prints the file given as the
-> only argument so the function can be checked by hand). In a real project
-> `main.c` ships together with your own application; the library entry point is
-> `get_next_line` / `get_next_line_bonus`.
+> Note: `main.c` in this directory is a small *testing* driver, kept **commented
+> out** on purpose. The subject states that test programs are neither delivered
+> nor evaluated, and an active `main()` here would clash with the one used during
+> the evaluation. Uncomment the block inside it if you want to try it by hand.
 
 ### Verifying it
 
